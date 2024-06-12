@@ -15,9 +15,15 @@ list(
   tar_target(id, 1:2),
   tar_map(
     # loop over different sample sizes
-    values = tibble(n = c(20, 50, 100)),
-    tar_target(data, simulateData(n, id), pattern = map(id))
+    values = tibble(n = c(5, 6)),
+    tar_target(data, simulateData(n, id), pattern = map(id)),
+    tar_target(pars, fitModelAndExtractPars(model, data, id), 
+               pattern = map(data, id))
   ),
+  # combine results
+  tar_target(pars, bind_rows(pars_5, pars_6)),
+  # summarise results
+  tar_target(power, calculatePower(pars)),
   
   ### Session info
   tar_target(
