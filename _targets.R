@@ -1,9 +1,13 @@
+options(
+  tidyverse.quiet = TRUE,
+  clustermq.scheduler = "slurm", 
+  clustermq.template = "slurm_clustermq.tmpl"
+)
 library(targets)
 library(tarchetypes)
 library(tidyverse)
-tar_option_set(
-  packages = c("ape","cmdstanr","coevolve")
-)
+tar_option_set(packages = c("ape","cmdstanr","coevolve",
+                            "posterior","tidyverse"))
 tar_source()
 # pipeline
 list(
@@ -12,18 +16,18 @@ list(
   # compile model
   tar_target(model, compileModel()),
   # simulate data and fit models
-  tar_target(id, 1:2),
+  tar_target(id, 1),
   tar_map(
     # loop over different sample sizes
-    values = tibble(n = c(5, 6)),
+    values = tibble(n = c(5)),
     tar_target(data, simulateData(n, id), pattern = map(id)),
-    tar_target(pars, fitModelAndExtractPars(model, data, id), 
+    tar_target(results, fitModelAndExtract(model, data, id), 
                pattern = map(data, id))
   ),
   # combine results
-  tar_target(pars, bind_rows(pars_5, pars_6)),
+  tar_target(results, bind_rows(results_5)),
   # summarise results
-  tar_target(power, calculatePower(pars)),
+  tar_target(power, calculatePower(results)),
   
   ### Session info
   tar_target(
