@@ -12,7 +12,8 @@ To run this code, you will need to [install R](https://www.r-project.org/) and
 install the following packages:
 
 ```
-install.packages(c("ape","posterior","tarchetypes","targets","tidyverse"))
+install.packages(c("ape","knitr","papaja","phaseR","posterior",
+                   "tarchetypes","targets","tidyverse"))
 ```
 
 You will also need to install the `cmdstanr` package using the following code
