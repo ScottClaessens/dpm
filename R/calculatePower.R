@@ -10,5 +10,6 @@ calculatePower <- function(results) {
     pivot_wider(
       names_from = "n",
       values_from = "prop"
-    )
+    ) %>%
+    rename(Direction = direction)
 }

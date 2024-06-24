@@ -2,7 +2,7 @@ targets::tar_source()
 
 # pipeline
 list(
-  ### 1. Synthetic data simulation
+  ### Synthetic data simulation
   
   # compile model
   tar_target(model, compileModel()),
@@ -30,6 +30,11 @@ list(
   tar_target(plotDT, plotDeltaTheta(deltaThetaX, deltaThetaY)),
   # plot phase plane
   tar_target(plotPP, plotPhasePlane(post)),
+  
+  ### Report
+  
+  # render report
+  tar_render(report, "report.Rmd"),
   
   ### Session info
   tar_target(

@@ -5,7 +5,8 @@ library(tarchetypes)
 library(tidyverse)
 tar_option_set(
   packages = c(
-    "ape","cmdstanr","coevolve","posterior","phaseR","tidybayes","tidyverse"
+    "ape","cmdstanr","coevolve","knitr","papaja",
+    "posterior","phaseR","tidybayes","tidyverse"
     )#,
   #controller = crew_controller_slurm(
   #  name = "coevolveSim",

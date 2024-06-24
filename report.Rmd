@@ -1,0 +1,147 @@
+---
+title: "DPM Simulation"
+author: "Scott Claessens"
+date: "`r Sys.Date()`"
+bibliography: references.bib
+output: 
+  bookdown::pdf_document2:
+    toc: false
+    number_sections: false
+---
+
+```{r echo=FALSE, results='hide', message=FALSE, warning=FALSE}
+library(knitr)
+library(papaja)
+library(posterior)
+library(targets)
+library(tidyverse)
+```
+
+# 2.3. Synthetic example
+
+In order to demonstrate that our formal model is able to accurately recover true 
+coevolutionary dynamics, we use a simple synthetic example.
+
+Consider an ancestral species with two continuous traits, $X$ and $Y$. We 
+simulate the coevolution of these traits over time, allowing traits to have 
+autoregressive effects (_i.e._, change in a trait influences itself in the 
+future), coevolutionary effects (_i.e._, change in a trait influences the other 
+trait in the future), and stochastic drift. In this particular simulation, we 
+specify that changes in $X$ influence future changes in $Y$, but not vice versa.
+
+The data generating model is as follows:
+
+$$
+\begin{aligned}
+Y_{t} &= 0.90 \cdot Y_{t-1} + 0.85 \cdot X_{t-1} + \epsilon_{X} \\
+X_{t} &= 0.90 \cdot X_{t-1} + \epsilon_{Y} \\
+\epsilon_{X}, \epsilon_{Y} &\sim \mathcal{N}(0, 0.05)
+\end{aligned}
+$$
+
+We allow this coevolutionary process to play out over discrete timesteps. In 
+each timestep, there is a small probability ($p$ = 0.05) of a speciation event, 
+where the parent species splits into two child species. Coevolutionary dynamics 
+then continue independently on each separate phylogenetic branch. We continue 
+this process of evolution and speciation until we have a sufficient sample size
+of species. We then fit our statistical model using the resulting phylogenetic
+tree and the "contemporary" values of $X$ and $Y$ from the final timestep.
+
+Note that this data generating process is a basic autoregressive model and, as 
+such, is not identical to the statistical model. Despite this misspecification,
+we find that, when fitted to data from 100 species, the statistical model 
+converges normally and is able to accurately recover the true coevolutionary 
+dynamics.
+
+```{r echo=FALSE}
+tar_load(deltaThetaX)
+tar_load(deltaThetaY)
+```
+
+By plugging the fitted model parameters into Equation 3 above, we are able to 
+calculate $\Delta\theta_{z}$, the change in the equilibrium value of each trait 
+resulting from an absolute deviation increase in the other trait. Figure 
+\@ref(fig:plotDT) visualises the resulting posterior distributions of 
+$\Delta\theta_{z}$ for $X$ → $Y$ and $Y$ → $X$. We can see that the posterior 
+distribution for $X$ → $Y$ is positive (median posterior value = 
+`r print_num(median(deltaThetaY)[1,1])`, 
+95% CI [`r print_num(quantile(deltaThetaY, 0.025)[1,1,1])` 
+`r print_num(quantile(deltaThetaY, 0.975)[1,1,1])`]) suggesting that an absolute 
+deviation increase in $X$ results in an increase in the equilibrium value of $Y$. 
+However, the posterior distribution for $Y$ → $X$ includes zero (median 
+posterior value = `r print_num(median(deltaThetaX)[1,1])`, 
+95% CI [`r print_num(quantile(deltaThetaX, 0.025)[1,1,1])` 
+`r print_num(quantile(deltaThetaX, 0.975)[1,1,1])`]) suggesting that an absolute 
+deviation increase in $Y$ does not change the equilibrium value of $X$. This 
+result accurately reflects the data generating process.
+
+```{r plotDT, fig.cap="Posterior distributions for $\\Delta\\theta_{z}$ for both directions of coevolution. $\\Delta\\theta_{z}$ represents the expected z-score change in the equilibrium value of each trait resulting from an absolute deviation increase in the other trait.", fig.height=4, fig.width=4, echo=FALSE, warning=FALSE, message=FALSE}
+tar_read(plotDT)
+```
+
+We can further visualise the influence of $X$ on $Y$ by plotting a phase plane 
+of the evolutionary dynamics implied by the model. Figure \@ref(fig:plotPP) 
+depicts the expected change in $X$ and $Y$ depending on their current states. 
+Both variables have been standardised as z-scores for easier interpretation. 
+The solid lines in the figure represent nullclines where $X$ (blue) and $Y$ 
+(red) are at equilibrium, depending on the state of the other.
+
+```{r plotPP, fig.cap="Phase plane showing the expected changes in $X$ and $Y$ depending on the state of the other trait. Arrows represent the direction and strength of selection in trait space. Solid lines represent nullclines where $X$ (blue) and $Y$ (red) are at equilibrium depending on the state of the other.", fig.height=6, fig.width=6, echo=FALSE, warning=FALSE, message=FALSE}
+include_graphics("figures/phasePlane.pdf")
+```
+
+The phase plane shows that changes in the value of $X$ have large effects on 
+the direction of selection on $Y$. When $X$ is low, there is strong negative 
+selection on $Y$. When $X$ is high, there is strong positive selection on $Y$.
+The nullclines also show that changes in $X$ have a large effect on the
+equilibrium value for $Y$. However, changes in the value of $Y$ do not have the 
+same effect on the direction of selection on $X$ or the equilibrium value of $X$.
+
+To determine whether this pattern of results generalises beyond a single 
+simulation run, we iterated the above simulation 100 times for three different 
+sample sizes: 20, 50, and 100 species. Table \@ref(tab:power) shows the 
+proportion of models where the posterior $\Delta\theta_{z}$ values have 95% 
+credible intervals excluding zero. The results show that the model is relatively 
+underpowered to detect the causal effect of $X$ on $Y$ when there are only 20 
+species, but it is able to detect this causal effect with sufficient power when
+the sample size is 50 or 100.
+
+(ref:powerCaption) The proportion of models in which the 95% credible interval for $\Delta\theta_{z}$ is greater than zero for three different sample sizes. 100 simulations were run for each sample size. Four models did not converge ($\hat{R}$ values > 1.1) and were not included in these proportions.
+
+```{r power, echo=FALSE, warning=FALSE, message=FALSE}
+tar_read(power) %>%
+  # do not show power for delta theta difference
+  filter(Direction != "Difference") %>%
+  # print table
+  kable(
+    format = "latex",
+    digits = 2,
+    booktabs = TRUE,
+    caption = "(ref:powerCaption)"
+    )
+```
+
+# 2.4.2. Evolution of social complexity across human societies
+
+...
+
+Sheehan et al. [-@Sheehan2023] studied the coevolution of religious and political 
+authority in 97 Austronesian societies. Religious and political authority were 
+both coded as four-level ordinal variables: absent, sub-local authority, local 
+authority, and supra-local authority. Mapping these variables onto a phylogeny 
+of Austronesian languages revealed that both religious and political authority 
+had high phylogenetic signals, suggesting that a DPM could reasonably be used to 
+assess the coevolution of these variables over the past 5000 years. Instead of 
+binarising the two ordinal variables to use Pagel's discrete method, as previous
+work had done [@Sheehan2018;@Watts2016], the authors explicitly modelled both 
+variables as ordinal in the DPM. The model revealed that both religious and 
+political authority coevolved reciprocally over time. In other words, increases
+in religious authority led to strong positive selection on political authority
+and, likewise, increases in political authority led to strong positive selection
+on religious authority. This is akin to "runaway selection" where both traits
+enter a positive feedback loop and increase concomitantly. This coevolutionary
+relationship makes sense in light of Austronesian ethnographies, which describe
+how both forms of authority are tightly interdependent and have have often
+historically served to legitimise one another [_e.g._, @Goodenough2002].
+
+# References
