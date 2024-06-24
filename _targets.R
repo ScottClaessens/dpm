@@ -1,14 +1,5 @@
-options(
-  tidyverse.quiet = TRUE,
-  clustermq.scheduler = "slurm", 
-  clustermq.template = "slurm_clustermq.tmpl"
-)
-library(targets)
-library(tarchetypes)
-library(tidyverse)
-tar_option_set(packages = c("ape","cmdstanr","coevolve",
-                            "posterior","tidyverse"))
-tar_source()
+targets::tar_source()
+
 # pipeline
 list(
   ### 1. Synthetic data simulation
@@ -16,18 +7,29 @@ list(
   # compile model
   tar_target(model, compileModel()),
   # simulate data and fit models
-  tar_target(id, 1),
+  tar_target(id, 1:100),
   tar_map(
     # loop over different sample sizes
-    values = tibble(n = c(5)),
+    values = tibble(n = c(20, 50, 100)),
     tar_target(data, simulateData(n, id), pattern = map(id)),
     tar_target(results, fitModelAndExtract(model, data, id), 
                pattern = map(data, id))
   ),
   # combine results
-  tar_target(results, bind_rows(results_5)),
+  tar_target(results, bind_rows(results_20, results_50, results_100)),
   # summarise results
   tar_target(power, calculatePower(results)),
+  # fit example individual model
+  tar_target(df, simulateData(n = 100, id = NULL)),
+  tar_target(fit, fitModel(model, df)),
+  tar_target(post, as_draws_rvars(fit)),
+  # calculate delta theta values
+  tar_target(deltaThetaX, calculateDeltaTheta(post, df, resp = "x")),
+  tar_target(deltaThetaY, calculateDeltaTheta(post, df, resp = "y")),
+  # plot delta theta
+  tar_target(plotDT, plotDeltaTheta(deltaThetaX, deltaThetaY)),
+  # plot phase plane
+  #..
   
   ### Session info
   tar_target(

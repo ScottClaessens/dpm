@@ -4,8 +4,8 @@ fitModelAndExtract <- function(model, data, id) {
     data = data,
     chains = 4,
     parallel_chains = 4,
-    iter_warmup = 1500,
-    iter_sampling = 1500,
+    iter_warmup = 2000,
+    iter_sampling = 2000,
     adapt_delta = 0.99,
     seed = 1L
     )
@@ -16,8 +16,9 @@ fitModelAndExtract <- function(model, data, id) {
   delta_theta_y <- calculateDeltaTheta(draws, data, resp = "y")
   # save summary
   tibble(
-    direction = c("X → Y", "Y → X"),
-    delta_theta = list(delta_theta_y, delta_theta_x)
+    direction = c("X -> Y", "Y -> X", "Difference"),
+    delta_theta = list(delta_theta_y, delta_theta_x,
+                       delta_theta_y - delta_theta_x)
     ) %>%
     mutate(
       median = map(delta_theta, function(x) as.numeric(median(x))),

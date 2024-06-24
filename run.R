@@ -1,1 +1,1 @@
-targets::tar_make_clustermq(workers = 50)
+targets::tar_make()
