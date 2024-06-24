@@ -29,7 +29,7 @@ list(
   # plot delta theta
   tar_target(plotDT, plotDeltaTheta(deltaThetaX, deltaThetaY)),
   # plot phase plane
-  #..
+  tar_target(plotPP, plotPhasePlane(post)),
   
   ### Session info
   tar_target(
