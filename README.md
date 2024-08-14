@@ -1,8 +1,7 @@
-# Testing Bayesian dynamic phylogenetic models using simulation
+# Causal inference and the detection of co-evolutionary contingencies using dynamic phylogenetic models
 
-This project uses the [coevolve](https://github.com/ScottClaessens/coevolve)
-package to assess the validity of inferences from Bayesian dynamic phylogenetic
-models.
+This repository contains the code for the paper "Causal inference and the 
+detection of co-evolutionary contingencies using dynamic phylogenetic models".
 
 ## Getting started
 
@@ -32,7 +31,7 @@ devtools::install_github("ScottClaessens/coevolve")
 
 ### Executing code
 
-1. Set the working directory to this code repository `setwd("myPath/coevolveSim")`
+1. Set the working directory to this code repository `setwd("myPath/dpm")`
 2. Load the `targets` package with `library(targets)`
 3. To run the analysis pipeline, run `tar_make()`
 4. To load individual targets into your environment, run `tar_load()` etc.

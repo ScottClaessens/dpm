@@ -1,4 +1,4 @@
-compileModel <- function() {
+compile_model <- function() {
   # generate dummy data and phylogenetic tree
   n <- 20
   tree <- ape::rcoal(n)

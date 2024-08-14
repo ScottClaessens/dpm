@@ -2,43 +2,44 @@ targets::tar_source()
 
 # pipeline
 list(
+  
   ### Synthetic data simulation
   
   # compile model
-  tar_target(model, compileModel()),
-  # simulate data and fit models
-  tar_target(id, 1:100),
+  tar_target(model, compile_model()),
+  # fit example individual model
+  tar_target(sim, simulate_data(n = 5)),
+  tar_target(fit, fit_model(model, sim, output_dir = "out")),
+  # plot figures
+  tar_target(phase_plane, plot_phase_plane(fit)),
+  tar_target(delta_theta, plot_delta_theta(fit)),
+  # simulate data and fit separate models
+  tar_target(id, 1:2),
   tar_map(
     # loop over different sample sizes
-    values = tibble(n = c(20, 50, 100)),
-    tar_target(data, simulateData(n, id), pattern = map(id)),
-    tar_target(results, fitModelAndExtract(model, data, id), 
-               pattern = map(data, id))
+    values = tibble(n = c(5, 10)),
+    tar_target(sim, simulate_data(n, id), pattern = map(id)),
+    tar_target(results, fit_model_and_extract(model, sim, id), 
+               pattern = map(sim, id))
   ),
   # combine results
-  tar_target(results, bind_rows(results_20, results_50, results_100)),
-  # summarise results
+  tar_target(results, bind_rows(results_5, results_10)),
+  # summarise power
   tar_target(power, calculatePower(results)),
-  # fit example individual model
-  tar_target(df, simulateData(n = 100, id = NULL)),
-  tar_target(fit, fitModel(model, df)),
-  tar_target(post, as_draws_rvars(fit)),
-  # calculate delta theta values
-  tar_target(deltaThetaX, calculateDeltaTheta(post, df, resp = "x")),
-  tar_target(deltaThetaY, calculateDeltaTheta(post, df, resp = "y")),
-  # plot delta theta
-  tar_target(plotDT, plotDeltaTheta(deltaThetaX, deltaThetaY)),
-  # plot phase plane
-  tar_target(plotPP, plotPhasePlane(post)),
   
-  ### Report
+  ### Simulation-based calibration
   
-  # render report
-  tar_render(report, "report.Rmd"),
+  ### Life history and niche complexity model
+  
+  ### Manuscript
+  
+  # render manuscript
+  #tar_render(manuscript, "manuscript.Rmd"),
   
   ### Session info
   tar_target(
-    sessionInfo, 
-    writeLines(capture.output(sessionInfo()), "sessionInfo.txt")
+    session_info, 
+    writeLines(capture.output(sessionInfo()), "session_info.txt")
   )
+  
 )
