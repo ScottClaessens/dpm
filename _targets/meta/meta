@@ -1,31 +1,32 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|11fa5c44323e3ffd|||||||||||||||
+.Random.seed|object|96607494f2a93d29|||||||||||||||
 calculatePower|function|1d28357b55a6c346|||||||||||||||
 compile_model|function|8bcbb7be48b22bcd|||||||||||||||
-delta_theta|stem|0fb7500c6449dd8a|7e66dbb4079f5d76|793558a618aa1f0d|1694263587||t19949.4814348633s|2e3ef689204b2a14|2620517|rds|local|vector|||32.625|Removed 331 rows containing missing values stat_slabinterval.|
-fit|stem|653526ccabba8148|2c0035a1cee8c4fe|337683a78d1bb86a|150100524||t19949.4637329675s|ac2fda7106b22986|156399|rds|local|vector|||26.484||
-fit_model|function|8eb78355f2633bda|||||||||||||||
-fit_model_and_extract|function|3f110ceb34e25cef|||||||||||||||
+delta_theta|stem|670c40f4f728ad28|7e66dbb4079f5d76|e8fa9bd2979b92ce|1694263587||t19949.5431870829s|47b4b35bcba227c8|81010891|rds|local|vector|||4.141|Removed 609 rows containing missing values stat_slabinterval.|
+fit|stem|5528148e3c86eea2|2c0035a1cee8c4fe|9ec0aa5d13f7be59|150100524||t19949.5388290237s|ed733cf32de4364d|220102|rds|local|vector|||2618.125||
+fit_model|function|9ce5e6737bb01354|||||||||||||||
+fit_model_and_extract|function|5009822987bceeeb|||||||||||||||
 id|stem|2fefdc373b08b745|d6d400ec037ce2e0|2c530c1562a7fbd1|1269029143||t19949.4143440025s|0968ba2c0c5b836c|98|rds|local|vector||id_6e95f3b2b5476d92*id_b3a2147ad240fae3|0||
+manuscript|stem|60e68aae6c14a036|2b095d5c3a836e96|2c530c1562a7fbd1|-1793997187|manuscript.pdf*manuscript.Rmd|t19949.6912805345s|e3946b0c896818c3|258374|file|local|vector|||6.125|package ape was built under R version 4.2.3. package knitr was built under R version 4.2.3. package posterior was built under R version 4.2.3|
 model|stem|3bbf3830cc8876ab|d9fbfdf4fbef846a|cbaf47a3502a07a7|808688450||t19949.4143393142s|3b33a68e220d521d|33095|rds|local|vector|||160.079|package ape was built under R version 4.2.3. package knitr was built under R version 4.2.3. package posterior was built under R version 4.2.3|
-phase_plane|stem|71f70cfa6201ee0a|2c15e3026f174c0c|e4e5d04845602aca|1833162448||t19949.4724004799s|988429bb6428792b|83|rds|local|vector|||31.063||
+phase_plane|stem|71f70cfa6201ee0a|2c15e3026f174c0c|20b9d0b378f96134|1833162448||t19949.5430737725s|988429bb6428792b|83|rds|local|vector|||6.281||
 plot_delta_theta|function|57551c696729ce4a|||||||||||||||
 plot_phase_plane|function|a5c5aa8b0407e6a5|||||||||||||||
 plotDeltaTheta|function|6b769b7d5422bd0b|||||||||||||||
 plotPhasePlane|function|8039e1eb00a5991a|||||||||||||||
-power|stem|cbaa787c593b816d|4b2b477872881c71|50f1ab95fc24eb0e|-1880636380||t19949.466934691s|f8c1d755d5d31832|173|rds|local|vector|||0.047||
-results|stem|69ded8f277f24262|ced2d9decd4f9ff7|b3b77e7a32be80b2|-322906963||t19949.4656405678s|ac2caa06e2ef613d|542|rds|local|vector|||0||
-results_10|pattern|12c32ce0de7b644c|68d98dcef379e1b5||777024459||||648|rds|local|vector||results_10_891b54e7888879e9*results_10_dac8735fcd96508e|98.547||
-results_10_891b54e7888879e9|branch|c013f39ff3132deb|68d98dcef379e1b5|05228b586238e15c|375392996||t19949.4640932902s|23c5199cbe97be21|325|rds|local|vector|results_10||31.109||
-results_10_dac8735fcd96508e|branch|e499b877835c9cd6|68d98dcef379e1b5|194889bfb8c52ecc|-1840127266||t19949.4648742274s|5975598e4e5a6487|323|rds|local|vector|results_10||67.438||
+power|stem|cbaa787c593b816d|4b2b477872881c71|267027d31f74c153|-1880636380||t19949.5431895094s|f8c1d755d5d31832|173|rds|local|vector|||0.031||
+results|stem|6322f9c1c18ff9d1|ced2d9decd4f9ff7|168900315d263774|-322906963||t19949.5431889021s|994f784d191925fe|543|rds|local|vector|||0||
+results_10|pattern|96be3a07761572cf|68d98dcef379e1b5||777024459||||647|rds|local|vector||results_10_891b54e7888879e9*results_10_dac8735fcd96508e|223.642||
+results_10_891b54e7888879e9|branch|06c0dc1d51872e73|68d98dcef379e1b5|e00806ee5b16df56|375392996||t19949.5401389613s|0dfb1b467bffbcf6|324|rds|local|vector|results_10||113.063||
+results_10_dac8735fcd96508e|branch|cfa56c389a1ba46a|68d98dcef379e1b5|1fc238e78bd21487|-1840127266||t19949.5414193795s|5975598e4e5a6487|323|rds|local|vector|results_10||110.579||
 results_4|pattern|7cec0d1d27e6618f|c8094cc9250f8e29||-1775753201||||647|rds|local|vector||results_4_5cc73db41208ef43*results_4_36da79cfcf122954|177.687||
 results_4_36da79cfcf122954|branch|8b0a81cf96732f4f|c8094cc9250f8e29|2b7a3d6627925fff|-826080176||t19949.4490233125s|23c5199cbe97be21|325|rds|local|vector|results_4||111.734||
 results_4_5cc73db41208ef43|branch|27c0432d89160a0e|c8094cc9250f8e29|dae89f744bce08bd|-1287086727||t19949.4477298122s|24c2ba8d4fe0ab05|322|rds|local|vector|results_4||65.953||
-results_5|pattern|64c8aa55ba78d85e|1fa341b9b4318f01||1730114822||||648|rds|local|vector||results_5_e8d74a5638c43590*results_5_6a9255a96c995069|66.109||
-results_5_6a9255a96c995069|branch|5d8b7338bb7b8935|1fa341b9b4318f01|67172f2e5bd6b7db|1705178489||t19949.465640251s|5975598e4e5a6487|323|rds|local|vector|results_5||50.5||
-results_5_e8d74a5638c43590|branch|d56e20199aa67a60|1fa341b9b4318f01|1fb208500ca966ef|732130779||t19949.4650553796s|23c5199cbe97be21|325|rds|local|vector|results_5||15.609||
+results_5|pattern|0fc2a8378c9f8052|1fa341b9b4318f01||1730114822||||649|rds|local|vector||results_5_e8d74a5638c43590*results_5_6a9255a96c995069|136.532||
+results_5_6a9255a96c995069|branch|c3b332f424883b73|1fa341b9b4318f01|9cf709867060da3c|1705178489||t19949.5430008601s|5975598e4e5a6487|323|rds|local|vector|results_5||74.516||
+results_5_e8d74a5638c43590|branch|f45313bfccc0402b|1fa341b9b4318f01|c874a3c30c5e71f2|732130779||t19949.5421377816s|e4e35ba89377bb93|326|rds|local|vector|results_5||62.016||
 session_info|stem|f8ef9171e3c39ec8|17eb94de359757e9|2c530c1562a7fbd1|1331870740||t19949.4143540581s|d21be8cf0dd771ce|44|rds|local|vector|||0.843||
-sim|stem|fdd5d292f54d0efc|28b0956cb1340129|484109d10273981d|220449508||t19949.4143438461s|cdc3995ee0535e80|1812|rds|local|vector|||0.375||
+sim|stem|cd5c15d7e0e32a83|1dd1ce43055ff200|484109d10273981d|220449508||t19949.4870839991s|27d5d7a603b5a28b|38542|rds|local|vector|||7.297|package ape was built under R version 4.2.3. package knitr was built under R version 4.2.3. package posterior was built under R version 4.2.3|
 sim_10|pattern|2a766ff18b2c29da|6959b272c1b8dfc8||2099289025||||6830|rds|local|vector||sim_10_387ee61c09221b66*sim_10_98d4356e926b6223|1.172||
 sim_10_387ee61c09221b66|branch|3082cd6746e80c2c|6959b272c1b8dfc8|484109d10273981d|680924088||t19949.4634180958s|31a82a726fda4f63|3645|rds|local|vector|sim_10||0.64||
 sim_10_98d4356e926b6223|branch|6d0a81f47429df44|6959b272c1b8dfc8|484109d10273981d|896071199||t19949.4634247055s|918b6c1481c49034|3185|rds|local|vector|sim_10||0.532||

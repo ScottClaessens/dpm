@@ -8,7 +8,7 @@ list(
   # compile model
   tar_target(model, compile_model()),
   # fit example individual model
-  tar_target(sim, simulate_data(n = 5)),
+  tar_target(sim, simulate_data(n = 100)),
   tar_target(fit, fit_model(model, sim, output_dir = "out")),
   # plot figures
   tar_target(phase_plane, plot_phase_plane(fit)),
@@ -34,7 +34,7 @@ list(
   ### Manuscript
   
   # render manuscript
-  #tar_render(manuscript, "manuscript.Rmd"),
+  tar_render(manuscript, "manuscript.Rmd"),
   
   ### Session info
   tar_target(

@@ -17,8 +17,8 @@ fit_model <- function(model, sim, output_dir = getOption("cmdstanr_output_dir"))
       chains = 4,
       parallel_chains = 4,
       output_dir = output_dir,
-      iter_warmup = 1000,
-      iter_sampling = 1000,
+      iter_warmup = 2000,
+      iter_sampling = 2000,
       seed = 1L
     )
   # return object of class 'coevfit'
