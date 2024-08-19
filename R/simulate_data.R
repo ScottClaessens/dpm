@@ -1,9 +1,9 @@
 simulate_data <- function(n, id = NULL) {
   # set arguments for simulation
-  variables <- c("x","y")
+  variables <- c("Promiscuity", "SpermSize")
   selection_matrix <- 
     matrix(
-      c(0.90, 0.00, # x -> y but not vice versa
+      c(0.90, 0.00, # promiscuity -> spermsize but not vice versa
         0.85, 0.90),
       nrow = 2,
       ncol = 2,
@@ -11,8 +11,8 @@ simulate_data <- function(n, id = NULL) {
       dimnames = list(variables, variables)
     )
   drift <- c(
-    "x" = 0.05,
-    "y" = 0.05
+    "Promiscuity" = 0.05,
+    "SpermSize"   = 0.05
     )
   # use function in coevolve package to return simulate data
   coevolve::coev_simulate_coevolution(

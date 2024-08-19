@@ -4,8 +4,8 @@ fit_model <- function(model, sim, output_dir = getOption("cmdstanr_output_dir"))
     coevolve::coev_make_standata(
       data = sim$data,
       variables = list(
-        x = "normal",
-        y = "normal"
+        Promiscuity = "normal",
+        SpermSize   = "normal"
       ),
       id = "species",
       tree = sim$tree
@@ -27,7 +27,10 @@ fit_model <- function(model, sim, output_dir = getOption("cmdstanr_output_dir"))
       fit = fit,
       data = sim$data,
       data_name = deparse(substitute(sim$data)),
-      variables = list(x = "normal", y = "normal"),
+      variables = list(
+        Promiscuity = "normal",
+        SpermSize   = "normal"
+        ),
       id = "species",
       tree = sim$tree,
       stan_code = model$code(),

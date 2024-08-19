@@ -10,9 +10,29 @@ list(
   # fit example individual model
   tar_target(sim, simulate_data(n = 100)),
   tar_target(fit, fit_model(model, sim, output_dir = "out")),
-  # plot figures
-  tar_target(phase_plane, plot_phase_plane(fit)),
-  tar_target(delta_theta, plot_delta_theta(fit)),
+  # get delta theta values
+  tar_target(
+    delta_theta_promiscuity,
+    coevolve::coev_calculate_delta_theta(
+      object = fit,
+      response = "Promiscuity",
+      predictor = "SpermSize"
+    )
+  ),
+  tar_target(
+    delta_theta_spermsize,
+    coevolve::coev_calculate_delta_theta(
+      object = fit,
+      response = "SpermSize",
+      predictor = "Promiscuity"
+    )
+  ),
+  # plot synthetic example
+  tar_target(
+    plot_synthetic,
+    plot_synthetic_example(fit, delta_theta_promiscuity, 
+                           delta_theta_spermsize)
+    ),
   # simulate data and fit separate models
   tar_target(id, 1:2),
   tar_map(

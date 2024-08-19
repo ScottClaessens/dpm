@@ -1,39 +1,31 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|96607494f2a93d29|||||||||||||||
+.Random.seed|object|4db8861e4ad2b932|||||||||||||||
 calculatePower|function|1d28357b55a6c346|||||||||||||||
-compile_model|function|8bcbb7be48b22bcd|||||||||||||||
-delta_theta|stem|670c40f4f728ad28|7e66dbb4079f5d76|e8fa9bd2979b92ce|1694263587||t19949.5431870829s|47b4b35bcba227c8|81010891|rds|local|vector|||4.141|Removed 609 rows containing missing values stat_slabinterval.|
-fit|stem|5528148e3c86eea2|2c0035a1cee8c4fe|9ec0aa5d13f7be59|150100524||t19949.5388290237s|ed733cf32de4364d|220102|rds|local|vector|||2618.125||
-fit_model|function|9ce5e6737bb01354|||||||||||||||
-fit_model_and_extract|function|5009822987bceeeb|||||||||||||||
-id|stem|2fefdc373b08b745|d6d400ec037ce2e0|2c530c1562a7fbd1|1269029143||t19949.4143440025s|0968ba2c0c5b836c|98|rds|local|vector||id_6e95f3b2b5476d92*id_b3a2147ad240fae3|0||
-manuscript|stem|60e68aae6c14a036|2b095d5c3a836e96|2c530c1562a7fbd1|-1793997187|manuscript.pdf*manuscript.Rmd|t19949.6912805345s|e3946b0c896818c3|258374|file|local|vector|||6.125|package ape was built under R version 4.2.3. package knitr was built under R version 4.2.3. package posterior was built under R version 4.2.3|
-model|stem|3bbf3830cc8876ab|d9fbfdf4fbef846a|cbaf47a3502a07a7|808688450||t19949.4143393142s|3b33a68e220d521d|33095|rds|local|vector|||160.079|package ape was built under R version 4.2.3. package knitr was built under R version 4.2.3. package posterior was built under R version 4.2.3|
-phase_plane|stem|71f70cfa6201ee0a|2c15e3026f174c0c|20b9d0b378f96134|1833162448||t19949.5430737725s|988429bb6428792b|83|rds|local|vector|||6.281||
-plot_delta_theta|function|57551c696729ce4a|||||||||||||||
-plot_phase_plane|function|a5c5aa8b0407e6a5|||||||||||||||
-plotDeltaTheta|function|6b769b7d5422bd0b|||||||||||||||
-plotPhasePlane|function|8039e1eb00a5991a|||||||||||||||
-power|stem|cbaa787c593b816d|4b2b477872881c71|267027d31f74c153|-1880636380||t19949.5431895094s|f8c1d755d5d31832|173|rds|local|vector|||0.031||
-results|stem|6322f9c1c18ff9d1|ced2d9decd4f9ff7|168900315d263774|-322906963||t19949.5431889021s|994f784d191925fe|543|rds|local|vector|||0||
-results_10|pattern|96be3a07761572cf|68d98dcef379e1b5||777024459||||647|rds|local|vector||results_10_891b54e7888879e9*results_10_dac8735fcd96508e|223.642||
-results_10_891b54e7888879e9|branch|06c0dc1d51872e73|68d98dcef379e1b5|e00806ee5b16df56|375392996||t19949.5401389613s|0dfb1b467bffbcf6|324|rds|local|vector|results_10||113.063||
-results_10_dac8735fcd96508e|branch|cfa56c389a1ba46a|68d98dcef379e1b5|1fc238e78bd21487|-1840127266||t19949.5414193795s|5975598e4e5a6487|323|rds|local|vector|results_10||110.579||
-results_4|pattern|7cec0d1d27e6618f|c8094cc9250f8e29||-1775753201||||647|rds|local|vector||results_4_5cc73db41208ef43*results_4_36da79cfcf122954|177.687||
-results_4_36da79cfcf122954|branch|8b0a81cf96732f4f|c8094cc9250f8e29|2b7a3d6627925fff|-826080176||t19949.4490233125s|23c5199cbe97be21|325|rds|local|vector|results_4||111.734||
-results_4_5cc73db41208ef43|branch|27c0432d89160a0e|c8094cc9250f8e29|dae89f744bce08bd|-1287086727||t19949.4477298122s|24c2ba8d4fe0ab05|322|rds|local|vector|results_4||65.953||
-results_5|pattern|0fc2a8378c9f8052|1fa341b9b4318f01||1730114822||||649|rds|local|vector||results_5_e8d74a5638c43590*results_5_6a9255a96c995069|136.532||
-results_5_6a9255a96c995069|branch|c3b332f424883b73|1fa341b9b4318f01|9cf709867060da3c|1705178489||t19949.5430008601s|5975598e4e5a6487|323|rds|local|vector|results_5||74.516||
-results_5_e8d74a5638c43590|branch|f45313bfccc0402b|1fa341b9b4318f01|c874a3c30c5e71f2|732130779||t19949.5421377816s|e4e35ba89377bb93|326|rds|local|vector|results_5||62.016||
-session_info|stem|f8ef9171e3c39ec8|17eb94de359757e9|2c530c1562a7fbd1|1331870740||t19949.4143540581s|d21be8cf0dd771ce|44|rds|local|vector|||0.843||
-sim|stem|cd5c15d7e0e32a83|1dd1ce43055ff200|484109d10273981d|220449508||t19949.4870839991s|27d5d7a603b5a28b|38542|rds|local|vector|||7.297|package ape was built under R version 4.2.3. package knitr was built under R version 4.2.3. package posterior was built under R version 4.2.3|
-sim_10|pattern|2a766ff18b2c29da|6959b272c1b8dfc8||2099289025||||6830|rds|local|vector||sim_10_387ee61c09221b66*sim_10_98d4356e926b6223|1.172||
-sim_10_387ee61c09221b66|branch|3082cd6746e80c2c|6959b272c1b8dfc8|484109d10273981d|680924088||t19949.4634180958s|31a82a726fda4f63|3645|rds|local|vector|sim_10||0.64||
-sim_10_98d4356e926b6223|branch|6d0a81f47429df44|6959b272c1b8dfc8|484109d10273981d|896071199||t19949.4634247055s|918b6c1481c49034|3185|rds|local|vector|sim_10||0.532||
-sim_4|pattern|47caa9e95a46321d|f70f7440d2da0623||739819668||||2873|rds|local|vector||sim_4_387ee61c09221b66*sim_4_98d4356e926b6223|0.172||
-sim_4_387ee61c09221b66|branch|22b0317f56a0233c|f70f7440d2da0623|484109d10273981d|1555587546||t19949.4151187238s|4a587fbfcb1c6f16|1886|rds|local|vector|sim_4||0.125||
-sim_4_98d4356e926b6223|branch|8e83c6c0535ec986|f70f7440d2da0623|484109d10273981d|-263322733||t19949.4151195089s|fe946fd0b87ee8a2|987|rds|local|vector|sim_4||0.047||
-sim_5|pattern|3856ed9a1f19482a|5d6bfb9667174b86||597193095||||2973|rds|local|vector||sim_5_387ee61c09221b66*sim_5_98d4356e926b6223|0.219||
-sim_5_387ee61c09221b66|branch|73a90e4231863ec0|5d6bfb9667174b86|484109d10273981d|-1573253475||t19949.4234867944s|9d0d21ea3386f962|1092|rds|local|vector|sim_5||0.094||
-sim_5_98d4356e926b6223|branch|e51d5d272805e407|5d6bfb9667174b86|484109d10273981d|-770944253||t19949.4234885306s|8e6d6d32091d6e23|1881|rds|local|vector|sim_5||0.125||
-simulate_data|function|a19d20e2653efb7f|||||||||||||||
+compile_model|function|dd8de568472fd3a6|||||||||||||||
+delta_theta_promiscuity|stem|fe3773ad9839f9e4|89210727b57785c9|9c2b539579e2ccfb|1992317983||t19954.5293599158s|4124638b4464f9f5|77833|rds|local|vector|||10.922||
+delta_theta_spermsize|stem|e2150886e0f030b5|52d4e8cb218ebb07|9c2b539579e2ccfb|-1569265813||t19954.5293810964s|e4b166175906129c|77599|rds|local|vector|||1.797||
+fit|stem|96ffd0aa61f42e5a|2c0035a1cee8c4fe|847cc3537e713249|150100524||t19954.5262684715s|6de04b31756341d5|220122|rds|local|vector|||2376.234||
+fit_model|function|dce5b34eb24371bc|||||||||||||||
+fit_model_and_extract|function|2012a3b0df9be45c|||||||||||||||
+id|stem|2fefdc373b08b745|d6d400ec037ce2e0|2c530c1562a7fbd1|1269029143||t19954.496657651s|0968ba2c0c5b836c|98|rds|local|vector||id_6e95f3b2b5476d92*id_b3a2147ad240fae3|4.953|package ape was built under R version 4.2.3. package bookdown was built under R version 4.2.3. package knitr was built under R version 4.2.3. package posterior was built under R version 4.2.3|
+manuscript|stem|ae58b481b4aa60c5|86cecb85f2168d08|d2fbe1778a5013c3|-1793997187|manuscript.pdf*manuscript.Rmd|t19954.7107112996s|51f329061fc69fe5|1263182|file|local|vector|||108.609|Package lipsum Warning Unknown language latin. Hyphenation patterns for. lipsum                english will be used instead.. LaTeX Warning Reference tabsocialcomplexity on page 11 undefined on input line 843.. LaTeX Warning There were undefined references.|
+model|stem|307b00e4461d6acb|d9fbfdf4fbef846a|acf9311890da01ce|808688450||t19954.4987203543s|69f3b2c2a737efe1|33120|rds|local|vector|||178.187||
+plot_synthetic|stem|35f0e587473f5642|3238d33aa8296bd5|3a4703ffee6e0b13|-95174283||t19954.6132028513s|c76fe92625e1b368|116115545|rds|local|vector|||27.921|Removed 838 rows containing missing values stat_slabinterval.|
+plot_synthetic_example|function|81ee81afc770d392|||||||||||||||
+power|stem|6d75ff0bb4ea38dd|4b2b477872881c71|f7a11d4505c147cd|-1880636380||t19954.5294877167s|afd7f87dad3f6f11|195|rds|local|vector|||0.063||
+results|stem|e8f738dcbb970662|ced2d9decd4f9ff7|b9e2bd0fa3c0391f|-322906963||t19954.5293813625s|2b6ef2a85b3fd189|565|rds|local|vector|||0||
+results_10|pattern|0fcbc489bc42b285|68d98dcef379e1b5||777024459||||691|rds|local|vector||results_10_891b54e7888879e9*results_10_dac8735fcd96508e|180.749||
+results_10_891b54e7888879e9|branch|519535ef24a27786|68d98dcef379e1b5|66270c3373ed6969|375392996||t19954.52733864s|f8bff6bda11134a2|346|rds|local|vector|results_10||92.437||
+results_10_dac8735fcd96508e|branch|8a9fecb8c2858903|68d98dcef379e1b5|a83907751f6052c8|-1840127266||t19954.5283608232s|46a4b1d29c239b0c|345|rds|local|vector|results_10||88.312||
+results_5|pattern|dd9ab91600764237|1fa341b9b4318f01||1730114822||||692|rds|local|vector||results_5_e8d74a5638c43590*results_5_6a9255a96c995069|75.343||
+results_5_6a9255a96c995069|branch|5eb7a54d5109551c|1fa341b9b4318f01|797fcb1f0e5451e8|1705178489||t19954.5292332376s|46a4b1d29c239b0c|345|rds|local|vector|results_5||53.984||
+results_5_e8d74a5638c43590|branch|b5b4cc23d477cfb5|1fa341b9b4318f01|8a5bfc6407b4f0c2|732130779||t19954.5286082651s|f042d07b06dcc05e|347|rds|local|vector|results_5||21.359||
+session_info|stem|f8ef9171e3c39ec8|17eb94de359757e9|2c530c1562a7fbd1|1331870740||t19954.4987569399s|d21be8cf0dd771ce|44|rds|local|vector|||0.094||
+sim|stem|00324ff585423c5e|1dd1ce43055ff200|6b01dafa6c515bd2|220449508||t19954.4987555973s|f4129a18035ffc32|38581|rds|local|vector|||3.016||
+sim_10|pattern|d2fb2e809ac70514|6959b272c1b8dfc8||2099289025||||6872|rds|local|vector||sim_10_387ee61c09221b66*sim_10_98d4356e926b6223|0.437||
+sim_10_387ee61c09221b66|branch|04a9825b5e44c8d3|6959b272c1b8dfc8|6b01dafa6c515bd2|680924088||t19954.4987593013s|b19d64a351a3bcd8|3666|rds|local|vector|sim_10||0.187||
+sim_10_98d4356e926b6223|branch|2f8caea1e3b4f646|6959b272c1b8dfc8|6b01dafa6c515bd2|896071199||t19954.4987624492s|e90f9e40d51a02f3|3206|rds|local|vector|sim_10||0.25||
+sim_5|pattern|00c27ccc88e25c75|5d6bfb9667174b86||597193095||||3013|rds|local|vector||sim_5_387ee61c09221b66*sim_5_98d4356e926b6223|0.171||
+sim_5_387ee61c09221b66|branch|0725670511c0022e|5d6bfb9667174b86|6b01dafa6c515bd2|-1573253475||t19954.4987636297s|a67cde3029bafc7d|1112|rds|local|vector|sim_5||0.062||
+sim_5_98d4356e926b6223|branch|39aa0be2abbad84d|5d6bfb9667174b86|6b01dafa6c515bd2|-770944253||t19954.4987650765s|d4adfd13a3a281e1|1901|rds|local|vector|sim_5||0.109||
+simulate_data|function|159c22a516ef7b32|||||||||||||||

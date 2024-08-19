@@ -2,27 +2,27 @@ fit_model_and_extract <- function(model, sim, id = NULL) {
   # fit model
   fit <- fit_model(model, sim)
   # calculate delta theta for both variables
-  delta_theta_x <- 
+  delta_theta_promiscuity <- 
     coevolve::coev_calculate_delta_theta(
       object = fit,
-      response = "x",
-      predictor = "y"
+      response = "Promiscuity",
+      predictor = "SpermSize"
       )
-  delta_theta_y <- 
+  delta_theta_spermsize <- 
     coevolve::coev_calculate_delta_theta(
       object = fit,
-      response = "y",
-      predictor = "x"
+      response = "SpermSize",
+      predictor = "Promiscuity"
       )
   # save summary
   tibble(
     direction = c(
-      "X -> Y",
-      "Y -> X"
+      "Promiscuity -> Sperm size",
+      "Sperm size -> Promiscuity"
       ),
     delta_theta = list(
-      as.numeric(delta_theta_y),
-      as.numeric(delta_theta_x)
+      as.numeric(delta_theta_spermsize),
+      as.numeric(delta_theta_promiscuity)
       )
     ) %>%
     mutate(
