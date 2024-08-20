@@ -157,18 +157,17 @@ on another -- which we define as the change in the optimal trait value of $Y$ as
 a function of the value of $X$ [see @Scholkopf2013 for a closely related 
 definition of causal effects in systems of ordinary differential equations] -- 
 can take a long time to be fully realized. As such, we capture species in the 
-process of adaptation adapting rather than at equilibrium. Consequently, 
-traditional methods underestimate the total causal effect of one trait another.
-This attenuation bias is a joint product of the strength of selection on the 
-response trait and the rate of change in the predictor trait. Intuitively, if 
-one trait changes too quickly, then the other will always be playing catch-up. 
-See \autoref{fig:evo-reg-coef} for an illustration of this process. A solution 
-to this problem is to move beyond traditional regression-based PCMs and 
-explicitly model trait change and the adaptive process using dynamic 
-phylogenetic models.
+process of adaptation rather than at equilibrium. Consequently, traditional 
+methods underestimate the total causal effect of one trait another. This 
+attenuation bias is a joint product of the strength of selection on the response
+trait and the rate of change in the predictor trait. Intuitively, if one trait 
+changes too quickly, then the other will always be playing catch-up. See 
+\autoref{fig:evo-reg-coef} for an illustration of this process. A solution to 
+this problem is to move beyond traditional regression-based PCMs and explicitly
+model trait change and the adaptive process using dynamic phylogenetic models.
 \endmybox
 
-```{r evo-reg-coef, echo=FALSE, fig.align='center', fig.cap='\\textit{Gradual adaptation flattens the evolutionary regression coefficient.} Ancestral species ("A") evolve towards their optimal trait Y value, which depends on the value of trait X shown on the solid line. Ancestors speciate and their descendants ("D") inherit their maladapted trait values, resulting in a slope between the two traits (dashed line) that is flatter than the true relationship. Redrawn from Figure 14.4 in Hansen (\\protect\\hyperlink{ref-Hansen2014}{2014}).', out.width='100%'}
+```{r evo-reg-coef, echo=FALSE, fig.align='center', fig.cap='\\textit{Gradual adaptation flattens the evolutionary regression coefficient.} Ancestral species ("A") evolve towards their optimal trait Y value, which depends on the value of trait X shown on the solid line. Ancestors speciate and their descendants ("D") inherit their maladapted trait values, resulting in a slope between the two traits (dashed line) that is flatter than the true relationship. Redrawn from Figure 14.4 in Hansen (\\protect\\hyperlink{ref-Hansen2014}{2014}).', out.width='60%'}
 knitr::include_graphics("figures/evolutionary_regression_coefficient.png")
 ```
 
@@ -223,24 +222,25 @@ included links between life history and social group size with brain size, with
 variable direct or indirect effects of diet and technical intelligence. Thus, 
 phylogenetic path analysis is well-suited for comparing existing hypotheses, 
 with DAGs generated "top-down" from prior theory or empirical literature
-[@GonzalezVoyer2014]. However, its applicability is limited to static DAGs 
-lacking any reciprocal effects over time, such as \autoref{fig:dags}b and c 
+[@GonzalezVoyer2014].
+
+However, the applicability of phylogenetic path analysis is limited to static 
+DAGs lacking any reciprocal effects over time, such as \autoref{fig:dags}b and c 
 where $X$, $Y$, and $Z$ do not have any temporal structure that could be used
 to resolve reciprocal causal effects. Such models assume a constant direction of
 effect between two variables, with bidirectional causal effects only being able
-to be described as unresolved patterns of correlation (\autoref{fig:dags}a).
-
-Positive (or negative) evolutionary feedback loops are predicted by many 
-theoretical models in response to life history tradeoffs and various forms of 
-frequency- and density-dependence, suggesting that reciprocal causation is 
-likely to be a common phenomenon explaining patterns of trait coevolution. For 
-example, @McNamara2022 presents a model of the coevolution of paternal care and
-extrapair paternity, which is driven by a frequency-dependent feedback loop over
-evolutionary time between males' tendency to seek extrapair copulations and the
-benefits of their paternal care. The inability to directly test for such dynamic
-feedback effects is a fundamental limitation of phylogenetic path analysis and 
-any other phylogenetic method reliant on static causal models, thus motivating
-the development of dynamic methods.
+to be described as unresolved patterns of correlation (\autoref{fig:dags}a). 
+This is an issue because positive (or negative) evolutionary feedback loops are
+predicted by many theoretical models in response to life history tradeoffs and 
+various forms of frequency- and density-dependence, suggesting that reciprocal
+causation is likely to be a common phenomenon explaining patterns of trait 
+coevolution. For example, @McNamara2022 presents a model of the coevolution of
+paternal care and extrapair paternity, which is driven by a frequency-dependent
+feedback loop over evolutionary time between males' tendency to seek extrapair
+copulations and the benefits of their paternal care. The inability to directly
+test for such dynamic feedback effects is a fundamental limitation of 
+phylogenetic path analysis and any other phylogenetic method reliant on static 
+causal models, thus motivating the development of dynamic methods.
 
 ## Pagel's discrete dynamic method
 
@@ -253,23 +253,24 @@ temporal contingency, referred to as "Granger causality" in economics
 then made the evolution of $Y$ more likely. This method has resulted in many 
 high-profile publications [@Cornwallis2017; @Fitzpatrick2009; @Kappeler2019; 
 @Sheehan2018; @Shultz2011; @Watts2016], all of which are built on the stronger 
-causal inference of temporal contingency. Unfortunately, despite its innovative 
-approach to causal inference, Pagel's method is fundamentally limited to 
-investigating the coevolution of binary traits, where dynamic evolutionary 
-transitions can be conceptualized in terms of probabilities of switching between 
-two discrete states. Application of this method to evolutionary topics involving 
-continuous phenomena (e.g. morphology, life history, brain size, etc.) thus 
-requires that researchers falsely dichotomize naturally occurring variation in 
-traits [e.g. @Cornwallis2017; @Fitzpatrick2009; @Sheehan2018; @Watts2016], which
-is well-established as an undesirable statistical practice leading to loss of 
-power, biased effect sizes, and inconsistent results [@Dawson2012; 
-@Royston2006]. For instance, @Fitzpatrick2009 dichotomized continuously-measured
-sperm length and speed by classifying traits below the species mean as "low" and
-those above the species mean as "high", and they collapsed a four-point scale of
-female promiscuity, based on behavioral and paternity data, into "low" (levels 1
-and 2) and "high" (levels 3 and 4). Using Pagel's method, they then showed that
-sperm evolved to be faster and longer in response to increases in female 
-promiscuity (see also Figure 4 below).
+causal inference of temporal contingency.
+
+Unfortunately, despite its innovative approach to causal inference, Pagel's 
+method is fundamentally limited to investigating the coevolution of binary 
+traits, where dynamic evolutionary transitions can be conceptualized in terms of
+probabilities of switching between two discrete states. Application of this 
+method to evolutionary topics involving continuous phenomena (e.g. morphology,
+life history, brain size, etc.) thus requires that researchers falsely 
+dichotomize naturally occurring variation in traits [e.g. @Cornwallis2017; 
+@Fitzpatrick2009; @Sheehan2018; @Watts2016], which is well-established as an 
+undesirable statistical practice leading to loss of power, biased effect sizes,
+and inconsistent results [@Dawson2012; @Royston2006]. For instance, 
+@Fitzpatrick2009 dichotomized continuously-measured sperm length and speed by 
+classifying traits below the species mean as "low" and those above the species 
+mean as "high", and they collapsed a four-point scale of female promiscuity, 
+based on behavioral and paternity data, into "low" (levels 1 and 2) and "high" 
+(levels 3 and 4). Using Pagel's method, they then showed that sperm evolved to 
+be faster and longer in response to increases in female promiscuity.
 
 The limitation of Pagel's method to binary traits is further exacerbated when 
 studying the (co)evolution of multiple continuous traits, which often motivates
@@ -304,15 +305,16 @@ inference, applicable to both discrete and continuous traits. We have attempted
 to do so through the development of a novel class of PCMs we refer to simply as
 dynamic phylogenetic models (DPMs) of trait coevolution. Our DPM is driven by a 
 multivariate stochastic differential equation, similar to a multivariate 
-Ornstein-Uhlenbeck (OU) process (see Box 2 for an overview of the basic OU 
-model) with greater model flexibility and complexity than is permitted by 
-standard implementations. Our approach arose from two complementary goals: 
-first, to extend previous Bayesian implementations of the multivariate OU model 
-such that the optimal trait value $\theta$ is updated dynamically (rather than 
-assuming piecewise constant, see Box 2). Second, we wanted a general form for 
-the optimal trait value $\theta$ that could be used to assess directionality 
-(X → Y vs. Y → X) and contingencies (X, then Y) in evolution, akin to Pagel's 
-[-@Pagel1994] method but without restrictions on the type or number of traits.
+Ornstein-Uhlenbeck (OU) process (see Box \autoref{box:ou-model} for an overview
+of the basic OU model) with greater model flexibility and complexity than is 
+permitted by standard implementations. Our approach arose from two complementary
+goals: first, to extend previous Bayesian implementations of the multivariate OU
+model such that the optimal trait value $\theta$ is updated dynamically (rather
+than assuming piecewise constant, see Box \autoref{box:ou-model}). Second, we 
+wanted a general form for the optimal trait value $\theta$ that could be used to
+assess directionality (X → Y vs. Y → X) and contingencies (X, then Y) in 
+evolution, akin to Pagel's [-@Pagel1994] method but without restrictions on the
+type or number of traits.
 
 \mybox[label=box:ou-model]{The Ornstein-Uhlenbeck (OU) model}
 The OU model is a mean-reverting, stationary Gauss-Markov process. It describes
@@ -426,12 +428,12 @@ and represent...
 ## Implementation
 
 Our strategy for mapping this model onto a phylogenetic tree is described in 
-\autoref{alg:alg} and visualized in Figure 3. Overall, our formal model is 
-highly flexible and can be used to bridge the gap between static and dynamic 
-models. Implementing the model in a Bayesian inferential framework using the 
-Stan statistical programming language (*CITE*) further facilitates incorporation
-of ... me, regularizing, missing data .... While using computational efficient, 
-cutting-edge MCMC algorithm...
+\autoref{alg:alg} and visualized in \autoref{fig:dpm-algorithm}. Overall, our 
+formal model is highly flexible and can be used to bridge the gap between static
+and dynamic models. Implementing the model in a Bayesian inferential framework 
+using the Stan statistical programming language (*CITE*) further facilitates 
+incorporation of ... me, regularizing, missing data .... While using 
+computational efficient, cutting-edge MCMC algorithm...
 
 \begin{algorithm}
   \caption{Implementation of the dynamic phylogenetic model}\label{alg:alg}
@@ -583,6 +585,10 @@ kable(
   )
 ```
 
+## Simulation-based calibration
+
+...
+
 ## Empirical applications
 \label{sec:empirical}
 
@@ -590,7 +596,7 @@ To further illustrate the flexibility of our method, we provide empirical
 applications that involve several variables ultimately best analyzed using 
 latent variables. In \autoref{sec:brain-size-evo}, we present a novel analysis 
 of existing data on primate brain size evolution, while 
-\autoref{tab:social-complexity} summarizes two published examples of cultural
+\autoref{sec:social-complexity} summarizes two published examples of cultural
 evolution in humans.
 
 ### Brain size evolution in primates
@@ -599,7 +605,7 @@ evolution in humans.
 Brain size, both in absolute terms and relative to body size, varies 
 tremendously among taxa, with primates as a group having larger brains than 
 other mammals, and humans having the largest brains of all primates [@Boddy2012;
-@Isler2008; @Miller2021; @Smaers2021]. This has motivated a large number of 
+@Isler2008; @Miller2019; @Smaers2021]. This has motivated a large number of 
 comparative phylogenetic analyses on correlates of brain size, typically framed
 as testing social or ecological benefits or constraints for evolving larger 
 brains [@DeCasien2017; @Dunbar2017; @Isler2009]. However, many have recognized 
@@ -614,9 +620,101 @@ due to its continuous nature, and this field is virtually predisposed to the use
 of DPMs. The issues and innovations highlighted here should also generalize to 
 many other morphological and socio-ecological traits.
 
+To illustrate the potential of DPMs to analyze brain size evolution, we used the
+dataset of @DeCasien2017, augmented by life-history variables from 
+@Herculano2019, and a consensus phylogeny from 10ktrees [@Arnold2010]. We 
+contrasted a typical phylogenetic multiple regression (Fig. 5a), in which all 
+predictors are interpreted as independent causes of brain size, with a latent 
+factor model (Fig. 5b), which was derived in a bottom-up way using exploratory 
+graph analysis (see Supplementary Materials). Note that instead of modeling 
+absolute brain size and adjusting for body size as is typical for phylogenetic
+regression (Fig. 5a), the model in Fig. 5b directly modeled relative brain size
+as the allometric slope for the brain-body relationship; we also accounted for
+variable allometric relationships using random intercepts and slopes at the
+species level, thus allowing species to differ in their brain-body allometry
+[@Smaers2021]. Note also that this DPM used Bayesian imputation rather than 
+removing species with missing data and losing valuable information and 
+statistical power. In contrast to the approach in Fig. 5a, which compares 
+independent causes and might conclude that "primate brain size is predicted by
+diet but not sociality" [@DeCasien2017], the causal structure in Fig 5b groups
+diet, social group size, and relative brain size into a single latent factor, 
+termed here "niche complexity", with another latent factor, "life-history pace",
+with loadings from the variables body size, age at maturity, and longevity. 
+These latent factor groupings are not surprising, given that much work in 
+primate socio-ecology has emphasized connections between diet and group size
+[@Sterck1997; @Wrangham1980], and both are consistently found to correlate with
+relative brain size [@DeCasien2017; @Dunbar2017]; the integration of life 
+history traits and body size is also well established (*CITE*).
+
+A DPM analyzing the coevolution of these two latent factors (see Supplementary
+Materials) showed that evolutionary changes in life-history pace (LH) cause 
+evolutionary changes in niche complexity (NC), but not vice versa (Fig. 5c). In
+other words, evolution of larger size and slower life history was inferred to 
+precede increases in relative brain size, group size, and frugivory. This is 
+consistent with the observations that repeated changes in size characterized
+mammalian evolution as lineages radiated into new niches [@Pagel2022] and 
+changes in body size associated with new niches were arguably primarily 
+responsible for changes in relative brain size [@Smaers2021]. Further, debates
+about the relative importance of diet and sociality in brain size evolution 
+[@DeCasien2017; @Dunbar2017] seem to be moot as both are sides of the same 
+socio-ecological coin intimately tied to relative brain size [see also 
+@Powell2017; @Wartel2019]. Many extensions of this model are possible, and more
+theoretically motivated causal models should be explored to further advance our
+understanding of brain size evolution.
+
 ### Evolution of social complexity across human societies
 \label{sec:social-complexity}
 
+Human societies are currently and have historically been tremendously diverse, 
+ranging from nomadic hunter-gatherers to large-scale states or empires. Many 
+anthropologists have used comparative approaches to better understand this 
+diversity [@Hooper2024; @Nunn2011], including many applications of Pagel's 
+discrete method [@Sheehan2018; @Watts2016]. Here we summarize two studies that
+have used our DPM.
+
+@Ringen_preprint examined the rise of social complexity using a global sample of
+186 pre-industrial societies that ranged from hunter-gatherers to agrarian 
+empires (Figure 6A). They included nine measures of complexity and three 
+measures of subsistence (Figure 6B), and compared three competing static causal
+models for the relationships between these variables: an "agricentric" model 
+wherein agricultural intensification causes all other variables, a single factor
+model in which a latent "complexity" factor explains all observed variables 
+[as in @Turchin2018], and a two-factor model [as proposed by @Chick1997]. Model
+comparison supported the two-factor model (the correlation structure of which is
+shown in Figure 5B). The authors labeled one factor "resource-use 
+intensification" (RI) and the other "technological and social differentiation" 
+(TSD). A DPM analyzing the co-evolution of the two latent variables RI and TSD 
+showed that, while these two variables are highly correlated (Figure 6C left),
+evolutionary changes in RI were inferred to cause changes in TSD but not vice
+versa (Figure 6C right). In other words, subsistence intensification was a 
+leader, not a follower, in the evolution of complex societies. These results 
+contrast with and complement @Turchin2018, who found a single dimension of 
+complexity (though in a mostly agricultural sample) and @Sheehan2018, who found
+reciprocal causation between agricultural intensification and political 
+complexity (though in a more regional sample).
+
+@Sheehan2023 studied the coevolution of religious and political authority in 97
+Austronesian societies. Religious and political authority were both coded as 
+four-level ordinal variables: absent, sub-local authority, local authority, and
+supra-local authority. Mapping these variables onto a phylogeny of Austronesian
+languages revealed that both religious and political authority had high 
+phylogenetic signals, suggesting that a DPM could reasonably be used to assess
+the coevolution of these variables over cultural evolutionary time. Instead of
+dichotomizing the two ordinal variables to use Pagel's discrete method, as 
+previous work had done [@Sheehan2018; @Watts2016], the authors explicitly 
+modelled both variables as ordinal in a DPM. The model revealed that both 
+religious and political authority coevolved reciprocally over time. In other 
+words, increases in religious authority led to strong positive selection on 
+political authority and, likewise, increases in political authority led to 
+strong positive selection on religious authority. This is akin to "runaway
+selection" where both traits enter a positive feedback loop and increase 
+concomitantly. This coevolutionary relationship makes sense in light of 
+Austronesian ethnographies, which describe how both forms of authority are 
+tightly interdependent and have often historically served to legitimize one 
+another [e.g. @Goodenough2002].
+
 # Conclusion
+
+xx
 
 # References

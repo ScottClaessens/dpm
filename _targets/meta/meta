@@ -1,5 +1,5 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|4db8861e4ad2b932|||||||||||||||
+.Random.seed|object|73ac3f80496a0250|||||||||||||||
 calculatePower|function|1d28357b55a6c346|||||||||||||||
 compile_model|function|dd8de568472fd3a6|||||||||||||||
 delta_theta_promiscuity|stem|fe3773ad9839f9e4|89210727b57785c9|9c2b539579e2ccfb|1992317983||t19954.5293599158s|4124638b4464f9f5|77833|rds|local|vector|||10.922||
@@ -8,7 +8,7 @@ fit|stem|96ffd0aa61f42e5a|2c0035a1cee8c4fe|847cc3537e713249|150100524||t19954.52
 fit_model|function|dce5b34eb24371bc|||||||||||||||
 fit_model_and_extract|function|2012a3b0df9be45c|||||||||||||||
 id|stem|2fefdc373b08b745|d6d400ec037ce2e0|2c530c1562a7fbd1|1269029143||t19954.496657651s|0968ba2c0c5b836c|98|rds|local|vector||id_6e95f3b2b5476d92*id_b3a2147ad240fae3|4.953|package ape was built under R version 4.2.3. package bookdown was built under R version 4.2.3. package knitr was built under R version 4.2.3. package posterior was built under R version 4.2.3|
-manuscript|stem|ae58b481b4aa60c5|86cecb85f2168d08|d2fbe1778a5013c3|-1793997187|manuscript.pdf*manuscript.Rmd|t19954.7107112996s|51f329061fc69fe5|1263182|file|local|vector|||108.609|Package lipsum Warning Unknown language latin. Hyphenation patterns for. lipsum                english will be used instead.. LaTeX Warning Reference tabsocialcomplexity on page 11 undefined on input line 843.. LaTeX Warning There were undefined references.|
+manuscript|stem|b0df9b8521392069|86cecb85f2168d08|d2fbe1778a5013c3|-1793997187|manuscript.pdf*manuscript.Rmd|t19955.5389517278s|d4ab0f3cfca9756e|1280234|file|local|vector|||121.297|Package lipsum Warning Unknown language latin. Hyphenation patterns for. lipsum                english will be used instead.|
 model|stem|307b00e4461d6acb|d9fbfdf4fbef846a|acf9311890da01ce|808688450||t19954.4987203543s|69f3b2c2a737efe1|33120|rds|local|vector|||178.187||
 plot_synthetic|stem|35f0e587473f5642|3238d33aa8296bd5|3a4703ffee6e0b13|-95174283||t19954.6132028513s|c76fe92625e1b368|116115545|rds|local|vector|||27.921|Removed 838 rows containing missing values stat_slabinterval.|
 plot_synthetic_example|function|81ee81afc770d392|||||||||||||||
