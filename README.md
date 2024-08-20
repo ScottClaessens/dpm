@@ -22,11 +22,13 @@ You will also need to install the `cmdstanr` package using the following code
 install.packages("cmdstanr", repos = c("https://mc-stan.org/r-packages/", getOption("repos")))
 ```
 
-Finally, you must install the development version of `coevolve` with:
+Finally, you must install the development versions of the `SBC` and `coevolve` 
+packages with:
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("ScottClaessens/coevolve")
+devtools::install_github("hyunjimoon/SBC")
 ```
 
 ### Executing code

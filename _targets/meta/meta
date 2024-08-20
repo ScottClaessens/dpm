@@ -1,5 +1,6 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|73ac3f80496a0250|||||||||||||||
+.Random.seed|object|a9b673aae2796109|||||||||||||||
+bind_sbc_results|function|10ea4cb5d193ba80|||||||||||||||
 calculatePower|function|1d28357b55a6c346|||||||||||||||
 compile_model|function|dd8de568472fd3a6|||||||||||||||
 delta_theta_promiscuity|stem|fe3773ad9839f9e4|89210727b57785c9|9c2b539579e2ccfb|1992317983||t19954.5293599158s|4124638b4464f9f5|77833|rds|local|vector|||10.922||
@@ -8,11 +9,17 @@ fit|stem|96ffd0aa61f42e5a|2c0035a1cee8c4fe|847cc3537e713249|150100524||t19954.52
 fit_model|function|dce5b34eb24371bc|||||||||||||||
 fit_model_and_extract|function|2012a3b0df9be45c|||||||||||||||
 id|stem|2fefdc373b08b745|d6d400ec037ce2e0|2c530c1562a7fbd1|1269029143||t19954.496657651s|0968ba2c0c5b836c|98|rds|local|vector||id_6e95f3b2b5476d92*id_b3a2147ad240fae3|4.953|package ape was built under R version 4.2.3. package bookdown was built under R version 4.2.3. package knitr was built under R version 4.2.3. package posterior was built under R version 4.2.3|
-manuscript|stem|b0df9b8521392069|86cecb85f2168d08|d2fbe1778a5013c3|-1793997187|manuscript.pdf*manuscript.Rmd|t19955.5389517278s|d4ab0f3cfca9756e|1280234|file|local|vector|||121.297|Package lipsum Warning Unknown language latin. Hyphenation patterns for. lipsum                english will be used instead.|
+manuscript|stem|dac8d5982923f782|86cecb85f2168d08|d2fbe1778a5013c3|-1793997187|manuscript.pdf*manuscript.Rmd|t19955.5607317722s|380567d9004d304d|1280207|file|local|vector|||121.109|Package lipsum Warning Unknown language latin. Hyphenation patterns for. lipsum                english will be used instead.|
 model|stem|307b00e4461d6acb|d9fbfdf4fbef846a|acf9311890da01ce|808688450||t19954.4987203543s|69f3b2c2a737efe1|33120|rds|local|vector|||178.187||
+plot_sbc_ecdf|function|c9e6db30a2a611a6|||||||||||||||
+plot_sbc_ecdf_diff|function|e26ea1a18e393c26|||||||||||||||
+plot_sbc1|stem|fee1a235023f9f9f|6e2cc9ec7b1086c5|4b94eac5f9839df1|351388026||t19955.691213409s|a63397c18bcd9b3f|6184751|rds|local|vector|||0.797||
+plot_sbc2|stem|68931007cb2f8206|e057da52f529b931|baf0789328c5ed40|-159386737||t19955.6911978304s|3402b3f8067a9264|6193894|rds|local|vector|||1.421||
 plot_synthetic|stem|35f0e587473f5642|3238d33aa8296bd5|3a4703ffee6e0b13|-95174283||t19954.6132028513s|c76fe92625e1b368|116115545|rds|local|vector|||27.921|Removed 838 rows containing missing values stat_slabinterval.|
 plot_synthetic_example|function|81ee81afc770d392|||||||||||||||
 power|stem|6d75ff0bb4ea38dd|4b2b477872881c71|f7a11d4505c147cd|-1880636380||t19954.5294877167s|afd7f87dad3f6f11|195|rds|local|vector|||0.063||
+prepare_sbc_backend|function|6b83bec7f38b0c7b|||||||||||||||
+prepare_sbc_generator|function|1b9b9b4aae864bc7|||||||||||||||
 results|stem|e8f738dcbb970662|ced2d9decd4f9ff7|b9e2bd0fa3c0391f|-322906963||t19954.5293813625s|2b6ef2a85b3fd189|565|rds|local|vector|||0||
 results_10|pattern|0fcbc489bc42b285|68d98dcef379e1b5||777024459||||691|rds|local|vector||results_10_891b54e7888879e9*results_10_dac8735fcd96508e|180.749||
 results_10_891b54e7888879e9|branch|519535ef24a27786|68d98dcef379e1b5|66270c3373ed6969|375392996||t19954.52733864s|f8bff6bda11134a2|346|rds|local|vector|results_10||92.437||
@@ -20,6 +27,21 @@ results_10_dac8735fcd96508e|branch|8a9fecb8c2858903|68d98dcef379e1b5|a83907751f6
 results_5|pattern|dd9ab91600764237|1fa341b9b4318f01||1730114822||||692|rds|local|vector||results_5_e8d74a5638c43590*results_5_6a9255a96c995069|75.343||
 results_5_6a9255a96c995069|branch|5eb7a54d5109551c|1fa341b9b4318f01|797fcb1f0e5451e8|1705178489||t19954.5292332376s|46a4b1d29c239b0c|345|rds|local|vector|results_5||53.984||
 results_5_e8d74a5638c43590|branch|b5b4cc23d477cfb5|1fa341b9b4318f01|8a5bfc6407b4f0c2|732130779||t19954.5286082651s|f042d07b06dcc05e|347|rds|local|vector|results_5||21.359||
+sbc_backend|stem|7e7bbf85156c3ae8|c0418cd34a63a8c8|86b565fb77c3886d|106349515||t19955.5858122203s|5ec06c82d8f6daec|33466|rds|local|vector|||0||
+sbc_datasets|pattern|abef7e987eaef4d5|58e5e492055eb2ff||-240389613||||2431|rds|local|list||sbc_datasets_387ee61c09221b66*sbc_datasets_98d4356e926b6223|34.64||
+sbc_datasets_387ee61c09221b66|branch|9aa7e0df8e0ac18a|58e5e492055eb2ff|e7d5a0047b371ace|-1686517752||t19955.6874123459s|24ee0111251d0a5d|1200|rds|local|list|sbc_datasets||33.078||
+sbc_datasets_98d4356e926b6223|branch|74b5c0a7a26211b9|58e5e492055eb2ff|e7d5a0047b371ace|-1642865892||t19955.6874305982s|38c1d58ae331093d|1231|rds|local|list|sbc_datasets||1.562||
+sbc_generator|stem|3dbbe511440db6a2|359a904df558a869|df8ea522bc65c90f|-1875231823||t19955.5893131314s|fbbca6b0f5e896fe|40483|rds|local|vector|||0||
+sbc_id|stem|2fefdc373b08b745|d6d400ec037ce2e0|2c530c1562a7fbd1|-876678352||t19955.6834260128s|0968ba2c0c5b836c|98|rds|local|vector|||2.843|package ape was built under R version 4.2.3. package bookdown was built under R version 4.2.3. package knitr was built under R version 4.2.3. package posterior was built under R version 4.2.3|
+sbc_model|stem|89ad79ff6dbd6c54|8805ecbe4c2832e6|fac9395d863b2c8b|-576270106||t19955.5739583158s|0fcbf3bc10db5dab|33321|rds|local|vector|||174.094||
+sbc_model_file|stem|787e52e4c8a54779|7c2ce266915351a8|2c530c1562a7fbd1|1137798057|stan/sbc_model.stan|t19955.5551693898s|6071cc812fe7cf3f|8111|file|local|vector|||2.812|package ape was built under R version 4.2.3. package bookdown was built under R version 4.2.3. package knitr was built under R version 4.2.3. package posterior was built under R version 4.2.3|
+sbc_results|pattern|e5bfe5f3589e9f46|2debdf5bd3447a12||482204900||||6064400|rds|local|list||sbc_results_14d381482f792adc*sbc_results_8f3c1064bbfbe62c|75.906||
+sbc_results_14d381482f792adc|branch|59388a837ab4b942|2debdf5bd3447a12|a4f80dee4c7c2625|-950814321||t19955.6877015227s|b648e93ffbd43d72|2992966|rds|local|list|sbc_results||23.156||
+sbc_results_7f290e41a647ffe9|branch|70f8e14f098f61ff|64d670f984984a83|bc13e90588e5eb51|-1510348347||t19955.6845841798s|e130ffd5c69de4be|2972163|rds|local|vector|sbc_results||64.922||
+sbc_results_8f3c1064bbfbe62c|branch|1b09e86b1f843cda|2debdf5bd3447a12|332fe02620017bfd|-1615983518||t19955.6883168147s|fc81a807c700fabe|3071434|rds|local|list|sbc_results||52.75||
+sbc_results_combined|stem|f3abc0f66d6e2465|c1311c941cfce4e2|70e3e853d906a5f7|-609432355||t19955.6911747751s|959178747a529246|6057861|rds|local|vector|||0.031||
+sbc_results_ef2bbb65064c6fdb|branch|e5516fb31c850dd9|64d670f984984a83|2a616ecf668c1e8a|-1463952498||t19955.6853124291s|15ac8d671d7cd22b|2993224|rds|local|vector|sbc_results||62.532||
+sbc_sample_backend|function|6b83bec7f38b0c7b|||||||||||||||
 session_info|stem|f8ef9171e3c39ec8|17eb94de359757e9|2c530c1562a7fbd1|1331870740||t19954.4987569399s|d21be8cf0dd771ce|44|rds|local|vector|||0.094||
 sim|stem|00324ff585423c5e|1dd1ce43055ff200|6b01dafa6c515bd2|220449508||t19954.4987555973s|f4129a18035ffc32|38581|rds|local|vector|||3.016||
 sim_10|pattern|d2fb2e809ac70514|6959b272c1b8dfc8||2099289025||||6872|rds|local|vector||sim_10_387ee61c09221b66*sim_10_98d4356e926b6223|0.437||

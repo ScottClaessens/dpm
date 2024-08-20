@@ -49,6 +49,35 @@ list(
   
   ### Simulation-based calibration
   
+  # model file
+  tar_target(sbc_model_file, "stan/sbc_model.stan", format = "file"),
+  # compile model
+  tar_target(sbc_model, cmdstanr::cmdstan_model(sbc_model_file)),
+  # prepare backend and generator
+  tar_target(sbc_backend, prepare_sbc_backend(sbc_model)),
+  tar_target(sbc_generator, prepare_sbc_generator(sbc_model)),
+  # iterate over sbc_id
+  tar_target(sbc_id, 1:2),
+  # generate datasets
+  tar_target(
+    sbc_datasets,
+    SBC::generate_datasets(sbc_generator, n_sims = 1),
+    pattern = map(id),
+    iteration = "list"
+    ),
+  # compute sbc
+  tar_target(
+    sbc_results,
+    SBC::compute_SBC(sbc_datasets, sbc_backend),
+    pattern = map(sbc_datasets, id),
+    iteration = "list"
+    ),
+  # combine sbc results
+  tar_target(sbc_results_combined, bind_sbc_results(sbc_results)),
+  # plot sbc results
+  tar_target(plot_sbc1, plot_sbc_ecdf(sbc_results_combined)),
+  tar_target(plot_sbc2, plot_sbc_ecdf_diff(sbc_results_combined)),
+  
   ### Life history and niche complexity model
   
   ### Manuscript
