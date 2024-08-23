@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.23)  24 AUG 2024 01:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.23)  24 AUG 2024 01:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -930,7 +930,7 @@ Here is how much of TeX's memory you used:
  36 hyphenation exceptions out of 8191
  98i,17n,101p,1700b,534s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx7.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmex10.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi5.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmr5.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmr7.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmtti10.pfb>
-Output written on manuscript.pdf (21 pages, 571971 bytes).
+Output written on manuscript.pdf (21 pages, 571970 bytes).
 PDF statistics:
  685 PDF objects out of 1000 (max. 8388607)
  602 compressed objects within 7 object streams

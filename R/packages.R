@@ -5,8 +5,8 @@ library(tarchetypes)
 library(tidyverse)
 tar_option_set(
   packages = c(
-    "ape","bookdown","cmdstanr","coevolve","cowplot","knitr",
-    "phaseR","posterior","SBC","tidybayes","tidyverse"
+    "ape","bookdown","cmdstanr","coevolve","cowplot","here",
+    "knitr","phaseR","posterior","SBC","tidybayes","tidyverse"
     )#,
   #controller = crew_controller_slurm(
   #  name = "dpm",

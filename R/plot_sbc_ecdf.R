@@ -8,7 +8,7 @@ plot_sbc_ecdf <- function(results_coev) {
     theme(strip.background = element_blank())
   # save
   ggsave(
-    filename = "figures/simulation_based_calibration/ecdf.pdf",
+    filename = here::here("figures/simulation_based_calibration/ecdf.pdf"),
     plot = out,
     width = 7,
     height = 5
