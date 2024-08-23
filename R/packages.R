@@ -10,9 +10,9 @@ tar_option_set(
     )#,
   #controller = crew_controller_slurm(
   #  name = "dpm",
-  #  workers = 80,
+  #  workers = 50,
   #  script_lines = "module load R",
-  #  slurm_time_minutes = 1440*2,
+  #  slurm_time_minutes = 60,
   #  slurm_memory_gigabytes_per_cpu = 2,
   #  slurm_cpus_per_task = 4
   #)
