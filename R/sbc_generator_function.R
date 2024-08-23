@@ -17,6 +17,7 @@ sbc_generator_function <- function(model, N) {
       ),
       id = "id",
       tree = tree,
+      scale = FALSE,
       prior_only = TRUE
     )
   # number of samples
@@ -61,6 +62,7 @@ sbc_generator_function <- function(model, N) {
       ),
       id = "id",
       tree = tree,
+      scale = FALSE,
       prior_only = FALSE
     )
   )

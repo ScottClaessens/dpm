@@ -12,7 +12,7 @@ tar_option_set(
   #  name = "dpm",
   #  workers = 50,
   #  script_lines = "module load R",
-  #  slurm_time_minutes = 60,
+  #  slurm_time_minutes = 20,
   #  slurm_memory_gigabytes_per_cpu = 2,
   #  slurm_cpus_per_task = 4
   #)

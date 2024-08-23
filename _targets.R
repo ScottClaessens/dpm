@@ -73,7 +73,8 @@ list(
     iteration = "list"
     ),
   # combine sbc results
-  tar_target(sbc_results_combined, bind_sbc_results(sbc_results)),
+  tar_target(sbc_results_combined, bind_sbc_results(sbc_results),
+             deployment = "main"),
   # plot sbc results
   tar_target(plot_sbc1, plot_sbc_ecdf(sbc_results_combined)),
   tar_target(plot_sbc2, plot_sbc_ecdf_diff(sbc_results_combined)),
