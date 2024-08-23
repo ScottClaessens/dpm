@@ -11,7 +11,7 @@ bibliography: references.bib
 link-citations: yes
 linkcolor: blue
 urlcolor: blue
-figsintext : yes 
+figsintext : yes
 ---
 
 \begin{center}
@@ -61,7 +61,7 @@ worked synthetic example of coevolution between two continuous traits --
 illustrated as female promiscuity and sperm length [@Fitzpatrick2009] -- to 
 assess the accuracy and uncertainty of inferences made with dynamic phylogenetic
 models across a reasonable range of sample sizes for phylogenetic research. We 
-also provide an accompanying coding tutorial using our **coevolve** R package to
+also provide an accompanying coding tutorial using our `coevolve` R package to
 aid empiricists in easily applying basic dynamic phylogenetic models to their 
 own datasets. We then demonstrate the generality and flexibility of our method 
 with two empirical applications, which extend the model to complex, 
@@ -204,14 +204,15 @@ appropriate set of covariates for testing a causal effect of $X$ on $Y$ may not
 be the same as the set for testing the causal effect of $Z$ on $Y$. 
 Nevertheless, all coefficients in a multivariate regression are commonly
 interpreted as causal effects, a phenomenon known as the "table 2 fallacy" 
-[@Westreich2013]. Most comparative analyses have not yet used this toolbox and 
-typically include several variables in a phylogenetic generalised least squares
-model without formal causal justification. This implicitly assumes that all 
-variables are independent causes, which is often problematic.
+[@Westreich2013]. Most comparative analyses have not yet used the causal 
+inference toolbox and typically include several variables in a phylogenetic 
+generalized least squares model without formal causal justification. This 
+implicitly assumes that all variables are independent causes, which is often 
+problematic.
 
 Phylogenetic path analysis represents a particular application of the causal 
 inference toolbox that overcomes some of the issues outlined above for 
-phylogenetic generalised least squares [@GonzalezVoyer2014; @vonHardenberg2013].
+phylogenetic generalized least squares [@GonzalezVoyer2014; @vonHardenberg2013].
 With phylogenetic path analysis, researchers pre-define specific causal models,
 ideally avoiding colliders and other traps (\autoref{fig:dags}), and compare 
 their fit to the data. Specifically, a DAG implies a set of variables that 
@@ -354,13 +355,13 @@ segment.
 Rather than estimating a phylogenetic variance-covariance matrix as is standard
 for PCMs, we instead partition the deterministic and stochastic components of 
 the coevolutionary process, adapting the continuous-time structural equation 
-modeling approach of Driver et al. (*CITE*) to the phylogenetic context. The 
-evolutionary history of any species or population is modeled as a time series 
-where the deterministic dynamics of an OU process play out over the length of 
-each tree segment, and the stochastic drift components (which are by definition
-orthogonal to selection) are added to the end of each segment as independent 
-samples from the standard normal distribution, scaled by the expected covariance
-for a given segment duration $t(s)$
+modeling approach of @Driver2017 to the phylogenetic context. The evolutionary 
+history of any species or population is modeled as a time series where the 
+deterministic dynamics of an OU process play out over the length of each tree 
+segment, and the stochastic drift components (which are by definition orthogonal
+to selection) are added to the end of each segment as independent samples from 
+the standard normal distribution, scaled by the expected covariance for a given 
+segment duration $t(s)$
 
 \begin{equation}
   \label{eq:ou-evo-model}
@@ -386,7 +387,7 @@ we assume that they are zero. This is equivalent to the assumption made in
 Pagel's [-@Pagel1994] method that multiple traits cannot transition together 
 instantaneously.
 
-Following *CITE*, the solution to \autoref{eq:ou-evo-model} for any time 
+Following @Driver2017, the solution to \autoref{eq:ou-evo-model} for any time 
 interval $t - t_0$ is
 
 \begin{equation}
@@ -404,9 +405,9 @@ where $\textbf{A}_{\text{\#}}=(\textbf{A}\otimes\textbf{I})+(\textbf{I}\otimes\t
 with $\otimes$ denoting the Kronecker product. $\textbf{I}$ is an identity 
 matrix, $\text{row()}$ is an operation that takes elements of a matrix row-wise
 and puts them in a column vector, and $\text{irow()}$ is the inverse of the row
-operation (*CITE*). In the OU process, $\frac{dy}{dt}=0$ when $y=\theta$ (Box 
-\autoref{box:ou-model}). Equivalently, we can calculate the equilibrium value 
-$\theta$ for each trait $\eta_i$ in the DPM as
+operation [@Driver2017]. In the OU process, $\frac{dy}{dt}=0$ when $y=\theta$ 
+(Box \autoref{box:ou-model}). Equivalently, we can calculate the equilibrium 
+value $\theta$ for each trait $\eta_i$ in the DPM as
 
 \begin{equation}
   \label{eq:equilibrium}
@@ -423,17 +424,12 @@ are determined by
   \textbf{b}_{\Delta\infty} = \textbf{A}^{-1}\textbf{b}
 \end{equation}
 
-and represent...
-
 ## Implementation
 
 Our strategy for mapping this model onto a phylogenetic tree is described in 
-\autoref{alg:alg} and visualized in \autoref{fig:dpm-algorithm}. Overall, our 
-formal model is highly flexible and can be used to bridge the gap between static
-and dynamic models. Implementing the model in a Bayesian inferential framework 
-using the Stan statistical programming language (*CITE*) further facilitates 
-incorporation of ... me, regularizing, missing data .... While using 
-computational efficient, cutting-edge MCMC algorithm...
+\autoref{alg:alg} and visualized in \autoref{fig:dpm-algorithm}. In short, we
+iterate over segments of the tree and allow the coevolutionary process to play
+out over the length of each tree segment.
 
 \begin{algorithm}
   \caption{Implementation of the dynamic phylogenetic model}\label{alg:alg}
@@ -461,21 +457,50 @@ computational efficient, cutting-edge MCMC algorithm...
 knitr::include_graphics("figures/dpm_algorithm.png")
 ```
 
-To aid empiricists in applying our model to their data, we provide the 
-**coevolve** R package, which provides a user-friendly interface for applying 
-DPMs when (i) traits can be well approximated using Gaussian, Poisson, or 
-Binomial distributions, (ii) there are no missing data, and (iii) there are no 
-multivariate latent variables in the causal model. A coding example using 
-**coevolve** accompanies our synthetic example below. For more complex scenarios
-involving non-standard trait distributions, missing data, and/or latent 
-variables, DPMs can instead be written directly in the Stan programming language
-to achieve the desired level of model flexibility. We provide Stan code for the
-two worked empirical applications below that can be adapted for such purposes.
+We have implemented this algorithm in a Bayesian inferential framework using the 
+Stan programming language [@Carpenter2017] (see Supplementary Materials for
+example Stan code). Stan employs the computationally efficient Hamiltonian Monte
+Carlo MCMC algorithm to sample from the posterior distribution. Implementing the 
+model in Stan also allows for a greater degree of model flexibility. Users can
+fit the model to any number of traits following any response distribution,
+lifting the limitation of Pagel's [-@Pagel1999] method to binary traits and
+eschewing the need for false dichotimization. Stan also allows for additional 
+features, such as the incorporation of regularization through prior 
+distributions, the inclusion of measurement error on traits, and handling 
+missing data.
+
+## The `coevolve` R package
+
+To aid researchers in applying the DPM to their own data, we have developed the 
+`coevolve` R package (https://github.com/ScottClaessens/coevolve). This 
+fully documented package provides a user-friendly interface for applying DPMs, 
+with simple functions for generating DPM Stan code and data lists, fitting DPMs
+to data using the `cmdstanr` package [@R_cmdstanr], and post-processing and 
+plotting model results.
+
+The development version of the `coevolve` package can be installed and loaded
+using the following R code:
+
+```r
+#install.packages("devtools")
+library(devtools)
+install_github("ScottClaessens/coevolve")
+library(coevolve)
+```
+
+Currently, the `coevolve` package supports binary, ordinal, count, continuous, 
+and positive real traits. The package can also handle missing trait data, 
+repeated observations per taxa, and model comparison using approximate 
+leave-one-out cross-validation. We plan to implement further response 
+distributions and latent variables in future versions of the package, but for 
+now users are encouraged manually adapt the Stan code produced by the package to
+add these features.
 
 ## Synthetic example
 
 In order to demonstrate that our formal model is able to accurately recover true
-coevolutionary dynamics, we use a simple synthetic example.
+coevolutionary dynamics, we apply the `coevolve` package to a simple synthetic
+example.
 
 Consider an ancestral species with two continuous traits. As an illustration, 
 let's assume that we are studying the highly diverse cichlid fish of Lake 
@@ -507,17 +532,45 @@ each timestep, there is a small probability ($p = 0.05$) of a speciation event,
 where the parent species splits into two child species. Coevolutionary dynamics
 then continue independently on each separate phylogenetic branch. We continue 
 this process of evolution and speciation until we have a sufficient sample size
-of cichlid species. We then fit our statistical model using the resulting 
-phylogenetic tree and the "contemporary" values of female promiscuity and sperm 
-size from the final timestep.
+of cichlid species.
 
-Note that this data generating process is a basic autoregressive model and, as 
-such, is not identical to the statistical model. Despite this misspecification,
-we find that, when fitted to data from 100 cichlid species, the statistical 
+We then use the `coev_fit()` function from the `coevolve` package to fit our 
+statistical model using the resulting phylogenetic tree and the "contemporary" 
+values of female promiscuity and sperm size from the final timestep. The code is
+as follows:
+
+```r
+fit <-
+  coev_fit(
+    data = sim$data,
+    variables = list(
+      Promiscuity = "normal",
+      SpermSize = "normal"
+    ),
+    id = "species",
+    tree = sim$tree
+  )
+```
+
+This function takes a data frame of trait values, a list of variables to 
+coevolve in the model (along with their associated response distributions), the
+column in the dataset that links to the phylogeny, and a phylogeny object of
+class `phylo`. The function generates the code and data list for Stan, compiles
+the model, and fits the model.
+
+We find that, when fitted to data from 100 cichlid species, the statistical 
 model converges normally and is able to accurately recover the true 
-coevolutionary dynamics.
+coevolutionary dynamics. The model summary is as follows:
 
-```{r delta_theta, echo = FALSE}
+```r
+summary(fit)
+```
+
+```{r fit-summary, echo = FALSE, warning=FALSE}
+summary(tar_read(fit))
+```
+
+```{r delta-theta, echo = FALSE}
 tar_load(delta_theta_promiscuity)
 tar_load(delta_theta_spermsize)
 ```
@@ -526,22 +579,34 @@ By plugging the fitted model parameters into \autoref{eq:equilibrium} above,
 we are able to calculate $\Delta\theta_z$, which is defined as the change in the
 equilibrium value of each trait resulting from an absolute deviation increase in
 the other trait. \autoref{fig:synthetic}b visualizes the resulting posterior 
-distributions of $\Delta\theta_z$ for both directions of selection. We can see 
-that the posterior distribution for promiscuity → sperm size is positive (median
-posterior value = `r round(median(delta_theta_spermsize), 2)`, 95% credible 
-interval [`r round(as.numeric(quantile(delta_theta_spermsize, 0.025)), 2)`
+distributions of $\Delta\theta_z$ for both directions of selection, which we
+can retrieve using the function `coev_calculate_delta_theta()`. For example,
+we might run:
+
+```r
+coev_calculate_delta_theta(
+  object = fit,
+  response = "Promiscuity",
+  predictor = "SpermSize"
+)
+```
+
+We can see from \autoref{fig:synthetic}b that the posterior distribution of 
+$\Delta\theta_z$ for promiscuity → sperm size is positive (median posterior 
+value = `r round(median(delta_theta_spermsize), 2)`, 95% credible interval 
+[`r round(as.numeric(quantile(delta_theta_spermsize, 0.025)), 2)`
 `r round(as.numeric(quantile(delta_theta_spermsize, 0.975)), 2)`])
 suggesting that an absolute deviation increase in female promiscuity results in
 an increase in the equilibrium value of sperm size. However, the posterior 
-distribution for sperm size → promiscuity includes zero (median posterior value
-= `r round(median(delta_theta_promiscuity), 2)`, 95% CI
+distribution of $\Delta\theta_z$ for sperm size → promiscuity includes zero 
+(median posterior value = `r round(median(delta_theta_promiscuity), 2)`, 95% CI
 [`r round(as.numeric(quantile(delta_theta_promiscuity, 0.025)), 2)`
 `r round(as.numeric(quantile(delta_theta_promiscuity, 0.975)), 2)`]) suggesting 
 that an absolute deviation increase in sperm size does not change the 
 equilibrium value of female promiscuity. This result accurately reflects the 
 data generating process.
 
-```{r synthetic, echo=FALSE, fig.align='center', out.width='100%', fig.width=7, fig.height=3, warning=FALSE, fig.cap="\\textit{Synthetic data example illustrated with the coevolution of female promiscuity and sperm size in cichlid fish.} (a) We use the example of the coevolution of female promiscuity and sperm size in cichlid fish as an illustration. Using Pagel's discrete method, Fitzpatrick et al. (\\protect\\hyperlink{ref-Fitzpatrick2009}{2009}) dichotomized their initially continuous measures of female promiscuity and sperm size and swimming speed, finding that changes in promiscuity preceded changes in sperm traits. (b) Our synthetic data analysis shows that the dynamic phylogenetic model correctly identifies a positive effect of female promiscuity on sperm size, but not of sperm size on promiscuity. (c) The flow field shows how continuous trait values of female promiscuity and sperm size are expected to change over evolutionary time as a function of the state of the other variable. Black and white fish represent males and females, respectively."}
+```{r synthetic, echo=FALSE, fig.align='center', out.width='100%', fig.width=7, fig.height=3, warning=FALSE, fig.cap="\\textit{Synthetic data example.} (a) We use the example of the coevolution of female promiscuity and sperm size in cichlid fish as an illustration. Using Pagel's discrete method, Fitzpatrick et al. (\\protect\\hyperlink{ref-Fitzpatrick2009}{2009}) dichotomized their initially continuous measures of female promiscuity and sperm size and swimming speed, finding that changes in promiscuity preceded changes in sperm traits. (b) Our synthetic data analysis shows that the dynamic phylogenetic model correctly identifies a positive effect of female promiscuity on sperm size, but not of sperm size on promiscuity. (c) The flow field shows how continuous trait values of female promiscuity and sperm size are expected to change over evolutionary time as a function of the state of the other variable. Black and white fish represent males and females, respectively."}
 tar_read(plot_synthetic)
 ```
 
@@ -551,7 +616,17 @@ plotting a phase plane of the evolutionary dynamics implied by the model.
 sperm size depending on their current states. Both variables have been 
 standardized as z-scores for easier interpretation. The solid lines in the 
 figure represent nullclines where female promiscuity (blue) and sperm size 
-(red) are at equilibrium, depending on the state of the other.
+(red) are at equilibrium, depending on the state of the other. This plot is
+easily generated using the following code:
+
+```r
+coev_plot_flowfield(
+  object = fit,
+  var1 = "Promiscuity",
+  var2 = "SpermSize",
+  nullclines = TRUE
+)
+```
 
 The phase plane shows that changes in female promiscuity have large effects on 
 the direction of selection on sperm size. When female promiscuity is low (i.e.,
@@ -587,17 +662,44 @@ kable(
 
 ## Simulation-based calibration
 
-...
+In order to further validate our Bayesian model, we ran a simulation-based 
+calibration exercise. Simulation-based calibration is a method to assess whether
+samples of the posterior distribution from a generator (in this case, our Stan
+model) faithfully capture the "true" posterior distribution [@Modrak2023; 
+@Talts2018]. We infer this faithfulness by simulating parameters from the prior
+distribution, using the simulated parameters to simulate multiple datasets, and 
+then fitting the model to those datasets. In a well-calibrated Bayesian model, 
+the resulting samples of the "data-averaged posterior" should be 
+indistinguishable from the prior distribution. If there is a discrepancy between
+the two, this suggests that the model is either misspecified or otherwise 
+inaccurately computing the posterior distribution.
+
+We used the `SBC` R package [@Modrak2023] to run our simulation-based 
+calibration exercise. We generated 500 simulated datasets from the prior ($N$ =
+20, one continuous trait and one binary trait) and fitted the DPM to these
+simulated datasets. We then determined whether the posterior ranks from the 
+fitted models were uniformly distributed by plotting, for several key model 
+parameters and the log-likelihood, the differences between the empirical 
+cumulative distribution function and a perfectly uniform cumulative distribution
+function. If posterior ranks are perfectly uniformly distributed as expected, 
+this should result in a flat line, though some variation from flat is to be 
+anticipated. Ideally, we would expect to see the lines falling within the 
+expected deviations at the 95% level (blue ovals). Indeed, this is what we find
+for our model (\autoref{fig:sbc}), suggesting that the Stan program is 
+well-calibrated.
+
+```{r sbc, echo=FALSE, fig.align='center', out.width='100%', fig.width=7, fig.height=5, warning=FALSE, fig.cap="\\textit{Simulation-based calibration.} Differences between the empirical cumulative distribution function (ECDF) and a perfectly uniform cumulative distribution function. Blue ovals represent theoretical deviations for these values at the 95% level."}
+tar_read(plot_sbc2)
+```
 
 ## Empirical applications
 \label{sec:empirical}
 
-To further illustrate the flexibility of our method, we provide empirical 
-applications that involve several variables ultimately best analyzed using 
-latent variables. In \autoref{sec:brain-size-evo}, we present a novel analysis 
-of existing data on primate brain size evolution, while 
-\autoref{sec:social-complexity} summarizes two published examples of cultural
-evolution in humans.
+To illustrate the flexibility of our method, we provide empirical applications 
+that involve several variables ultimately best analyzed using latent variables. 
+In \autoref{sec:brain-size-evo}, we present a novel analysis of existing data on
+primate brain size evolution, while \autoref{sec:social-complexity} summarizes
+two published examples of cultural evolution in humans.
 
 ### Brain size evolution in primates
 \label{sec:brain-size-evo}
@@ -715,6 +817,6 @@ another [e.g. @Goodenough2002].
 
 # Conclusion
 
-xx
+xxx
 
 # References

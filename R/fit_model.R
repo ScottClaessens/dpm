@@ -19,6 +19,7 @@ fit_model <- function(model, sim, output_dir = getOption("cmdstanr_output_dir"))
       output_dir = output_dir,
       iter_warmup = 2000,
       iter_sampling = 2000,
+      adapt_delta = 0.99,
       seed = 1L
     )
   # return object of class 'coevfit'

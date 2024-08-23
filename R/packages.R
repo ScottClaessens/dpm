@@ -9,11 +9,11 @@ tar_option_set(
     "phaseR","posterior","SBC","tidybayes","tidyverse"
     )#,
   #controller = crew_controller_slurm(
-  #  name = "coevolveSim",
-  #  workers = 1,
+  #  name = "dpm",
+  #  workers = 80,
   #  script_lines = "module load R",
-  #  slurm_time_minutes = 2880,
-  #  slurm_memory_gigabytes_per_cpu = 1,
+  #  slurm_time_minutes = 1440*2,
+  #  slurm_memory_gigabytes_per_cpu = 2,
   #  slurm_cpus_per_task = 4
   #)
 )

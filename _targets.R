@@ -34,16 +34,16 @@ list(
                            delta_theta_spermsize)
     ),
   # simulate data and fit separate models
-  tar_target(id, 1:2),
+  tar_target(id, 1:100),
   tar_map(
     # loop over different sample sizes
-    values = tibble(n = c(5, 10)),
+    values = tibble(n = c(20, 50, 100)),
     tar_target(sim, simulate_data(n, id), pattern = map(id)),
     tar_target(results, fit_model_and_extract(model, sim, id), 
                pattern = map(sim, id))
   ),
   # combine results
-  tar_target(results, bind_rows(results_5, results_10)),
+  tar_target(results, bind_rows(results_20, results_50, results_100)),
   # summarise power
   tar_target(power, calculatePower(results)),
   
@@ -56,20 +56,20 @@ list(
   # prepare backend and generator
   tar_target(sbc_backend, prepare_sbc_backend(sbc_model)),
   tar_target(sbc_generator, prepare_sbc_generator(sbc_model)),
-  # iterate over sbc_id
-  tar_target(sbc_id, 1:2),
+  # iterate over sbc_id batches
+  tar_target(sbc_id, 1:50),
   # generate datasets
   tar_target(
     sbc_datasets,
-    SBC::generate_datasets(sbc_generator, n_sims = 1),
-    pattern = map(id),
+    SBC::generate_datasets(sbc_generator, n_sims = 10),
+    pattern = map(sbc_id),
     iteration = "list"
     ),
   # compute sbc
   tar_target(
     sbc_results,
     SBC::compute_SBC(sbc_datasets, sbc_backend),
-    pattern = map(sbc_datasets, id),
+    pattern = map(sbc_datasets, sbc_id),
     iteration = "list"
     ),
   # combine sbc results
