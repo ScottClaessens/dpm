@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.23)  23 AUG 2024 22:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.23)  23 AUG 2024 22:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -890,10 +890,10 @@ Package pdftex.def Info: manuscript_files/figure-latex/synthetic-1.pdf  used on 
 <manuscript_files/figure-latex/sbc-1.pdf, id=325, 505.89pt x 361.35pt>
 File: manuscript_files/figure-latex/sbc-1.pdf Graphic file (type pdf)
 <use manuscript_files/figure-latex/sbc-1.pdf>
-Package pdftex.def Info: manuscript_files/figure-latex/sbc-1.pdf  used on input line 1012.
+Package pdftex.def Info: manuscript_files/figure-latex/sbc-1.pdf  used on input line 1011.
 (pdftex.def)             Requested size: 469.76265pt x 335.54477pt.
 
-Overfull \hbox (5.00763pt too wide) in paragraph at lines 1012--1013
+Overfull \hbox (5.00763pt too wide) in paragraph at lines 1011--1012
  []\T1/lmr/m/n/10 {[] 
  []
 
@@ -930,7 +930,7 @@ Here is how much of TeX's memory you used:
  36 hyphenation exceptions out of 8191
  98i,17n,101p,1700b,534s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx7.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmex10.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi5.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmr5.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmr7.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></scale_wlg_persistent/filesets/home/scla896/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmtti10.pfb>
-Output written on manuscript.pdf (21 pages, 571355 bytes).
+Output written on manuscript.pdf (21 pages, 571285 bytes).
 PDF statistics:
  685 PDF objects out of 1000 (max. 8388607)
  602 compressed objects within 7 object streams

@@ -652,8 +652,7 @@ kable(
   caption = paste0(
     "The proportion of models in which the 95% credible interval for ",
     "$\\Delta\\theta_{z}$ is greater than zero for three different sample ",
-    "sizes. 100 simulations were run for each sample size. NOTE THIS IS ",
-    "NOT FULL SIMULATION"
+    "sizes. 100 simulations were run for each sample size."
     ),
   digits = 2,
   booktabs = TRUE
