@@ -9,7 +9,7 @@ plot_sbc_ecdf_diff <- function(results_coev) {
     theme(strip.background = element_blank())
   # save
   ggsave(
-    filename = here::here("figures/simulation_based_calibration/ecdf_difference.pdf"),
+    filename = "figures/simulation_based_calibration/ecdf_difference.pdf",
     plot = out,
     width = 7,
     height = 5

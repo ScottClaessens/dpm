@@ -29,11 +29,11 @@ life history and behavior [@Bielby2007; @Clayton1994; @MacLean2012;
 covariation over time, which can be investigated using a diverse family of 
 statistical techniques depending on the research question and type of data 
 available [@Garamszegi2014; @Harvey1991; @Nunn2011]. Many PCMs focus on 
-understanding how traits coevolve by estimating evolutionary correlations and 
+understanding *how* traits coevolve by estimating evolutionary correlations and 
 rates of change across phylogenetic trees, which can be used to better 
 understand natural history and inform ancestral state reconstructions. However,
 evolutionary correlation does not imply evolutionary causation between traits 
-[@Shipley2016]. Thus, PCMs facilitating inference of why traits coevolve and 
+[@Shipley2016]. Thus, PCMs facilitating inference of *why* traits coevolve and 
 change together across time are indispensable tools for testing 
 macroevolutionary and ecological theory.
 
@@ -481,7 +481,7 @@ plotting model results.
 The development version of the `coevolve` package can be installed and loaded
 using the following R code:
 
-```r
+```{r eval=FALSE}
 #install.packages("devtools")
 library(devtools)
 install_github("ScottClaessens/coevolve")
@@ -539,7 +539,7 @@ statistical model using the resulting phylogenetic tree and the "contemporary"
 values of female promiscuity and sperm size from the final timestep. The code is
 as follows:
 
-```r
+```{r eval=FALSE}
 fit <-
   coev_fit(
     data = sim$data,
@@ -562,7 +562,7 @@ We find that, when fitted to data from 100 cichlid species, the statistical
 model converges normally and is able to accurately recover the true 
 coevolutionary dynamics. The model summary is as follows:
 
-```r
+```{r eval=FALSE}
 summary(fit)
 ```
 
@@ -583,7 +583,7 @@ distributions of $\Delta\theta_z$ for both directions of selection, which we
 can retrieve using the function `coev_calculate_delta_theta()`. For example,
 we might run:
 
-```r
+```{r eval=FALSE}
 coev_calculate_delta_theta(
   object = fit,
   response = "Promiscuity",
@@ -619,7 +619,7 @@ figure represent nullclines where female promiscuity (blue) and sperm size
 (red) are at equilibrium, depending on the state of the other. This plot is
 easily generated using the following code:
 
-```r
+```{r eval=FALSE}
 coev_plot_flowfield(
   object = fit,
   var1 = "Promiscuity",
@@ -687,7 +687,7 @@ expected deviations at the 95% level (blue ovals). Indeed, this is what we find
 for our model (\autoref{fig:sbc}), suggesting that the Stan program is 
 well-calibrated.
 
-```{r sbc, echo=FALSE, fig.align='center', out.width='100%', fig.width=7, fig.height=5, warning=FALSE, fig.cap="\\textit{Simulation-based calibration.} Differences between the empirical cumulative distribution function (ECDF) and a perfectly uniform cumulative distribution function. Blue ovals represent theoretical deviations for these values at the 95% level."}
+```{r sbc, echo=FALSE, fig.align='center', out.width='100%', fig.width=7, fig.height=5, warning=FALSE, fig.cap=, fig.cap="\\textit{Simulation-based calibration.} Differences between the empirical cumulative distribution function (ECDF) and a perfectly uniform cumulative distribution function. Blue ovals represent theoretical deviations for these values at the 95\\% level."}
 tar_read(plot_sbc2)
 ```
 

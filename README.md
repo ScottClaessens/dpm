@@ -11,7 +11,7 @@ To run this code, you will need to [install R](https://www.r-project.org/) and
 install the following packages:
 
 ```
-install.packages(c("ape","bookdown","cowplot","ggdist","here","knitr","phaseR",
+install.packages(c("ape","bookdown","cowplot","ggdist","knitr","magick","phaseR",
                    "posterior","tarchetypes","targets","tidyverse"))
 ```
 

@@ -4,7 +4,7 @@ plot_synthetic_example <- function(fit, delta_theta_promiscuity,
   pA <-
     ggdraw() +
     draw_image(
-      image = here::here("figures/cichlids/cichlids.png"),
+      image = "figures/cichlids/cichlids.png",
       scale = 0.95
       )
   # plot delta theta
@@ -42,7 +42,7 @@ plot_synthetic_example <- function(fit, delta_theta_promiscuity,
     )
   # plot phase plane
   png(
-    here::here("figures/cichlids/phase_plane.png"),
+    "figures/cichlids/phase_plane.png",
     height = 12,
     width = 12,
     units = "cm",
@@ -58,28 +58,28 @@ plot_synthetic_example <- function(fit, delta_theta_promiscuity,
   pC <-
     ggdraw() + 
       draw_image(
-        image = here::here("figures/cichlids/phase_plane.png")
+        image = "figures/cichlids/phase_plane.png"
         ) +
       draw_image(
-        image = here::here("figures/cichlids/low_sperm_size.png"),
+        image = "figures/cichlids/low_sperm_size.png",
         scale = 0.15,
         x = -0.40,
         y = -0.27
         ) +
       draw_image(
-        image = here::here("figures/cichlids/high_sperm_size.png"),
+        image = "figures/cichlids/high_sperm_size.png",
         scale = 0.25,
         x = -0.43,
         y =  0.31
       ) +
       draw_image(
-        image = here::here("figures/cichlids/low_promiscuity.png"),
+        image = "figures/cichlids/low_promiscuity.png",
         scale = 0.15,
         x = -0.25,
         y = -0.41
       ) +
       draw_image(
-        image = here::here("figures/cichlids/high_promiscuity.png"),
+        image = "figures/cichlids/high_promiscuity.png",
         scale = 0.15,
         x =  0.35,
         y = -0.41
@@ -94,7 +94,7 @@ plot_synthetic_example <- function(fit, delta_theta_promiscuity,
     )
   ggsave(
     plot = out,
-    filename = here::here("figures/cichlids/synthetic.pdf"),
+    filename = "figures/cichlids/synthetic.pdf",
     width = 7,
     height = 3
     )
