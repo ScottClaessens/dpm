@@ -1,5 +1,5 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|83454df70c039793|||||||||||||||
+.Random.seed|object|10be0142d995acb7|||||||||||||||
 bind_sbc_results|function|10ea4cb5d193ba80|||||||||||||||
 calculatePower|function|1d28357b55a6c346|||||||||||||||
 compile_model|function|0fd216332d7d19f5|||||||||||||||
@@ -9,14 +9,14 @@ fit|stem|2c0010316d3fa196|2c0035a1cee8c4fe|1668479173cae42d|150100524||t19962.72
 fit_model|function|c24af2c069ab7807|||||||||||||||
 fit_model_and_extract|function|1a0f579b87dd6347|||||||||||||||
 id|stem|2f3245e115a4b2fa|3abebb0a1b0e4d88|2c530c1562a7fbd1|1269029143||t19957.4640055128s|097df6ed47d18f96|107|rds|local|vector||id_6e95f3b2b5476d92*id_b3a2147ad240fae3*id_f5968f8186dadba0*id_50003b5d5254d75e*id_5105e1ee401f4beb*id_943cd151fa74649e*id_a7098e9b959e7c27*id_3a45cb041330bd5a*id_0c0522beb9e90953*id_4b8caeb2425c3113*id_446319f78fcec68d*id_934bc55ab3ad8d0c*id_1e1a3fb3163a2222*id_ec4f2cdc06cb2c22*id_fc68b7f7b40cc54f*id_aa31f84bf184361f*id_c0916aa2dc6b5b30*id_8dbc37444e6cc69e*id_0e110383a26da0ff*id_d290306a6450b2e2*id_cf3685ce3c1b1db3*id_fba517401b549c1d*id_052c076623c9f2e6*id_6617b11a7c66ee8e*id_57ea5c9c96396452*id_4096769dbafa7591*id_b56c360f0ffdd258*id_f4790d2d3ff0d60b*id_2bf19d16ecd4fca2*id_73b794877cd9a999*id_390042d89b95c071*id_6f5918b501ae94a9*id_ccae4213e7317059*id_4697e9e2e1e77429*id_5cfbe16edc625093*id_e34a4d8ce615fd55*id_2a6a6e8a59010ac9*id_9cb515848a8969e0*id_d816299a36bd45e9*id_f921c7fe6601d901*id_874665cac837130a*id_4ecf115f732c7c9a*id_b37368a70ac5a51d*id_3a1e4d66bb801280*id_6a8b3b844aea3de7*id_7e85b9da730d3d18*id_362959c4a751329a*id_9aebbc06a1860a4b*id_df20842d11968c74*id_8c7f19e1fdb50010*id_6b4bf7afec387560*id_09afe80fbb52a14b*id_5c857f7ad9397ed5*id_1a9b425b423a82b2*id_84110764bcc16fa7*id_c7d53f663d4fc301*id_76da64c4a1d19a70*id_f1134f793624d4ba*id_d61364f98d35b5eb*id_159a550eb78a4ed9*id_b9d5fc4e30709931*id_ee67d605dd762071*id_a740cd3205cb75fd*id_4c606f1b684b37f8*id_caa4dcfc75ff2741*id_e16f68a1045081e1*id_6563c6ec8026e9ee*id_cb8bf8267c9b20da*id_9a6365f1d73bcc18*id_669981af69be3b8e*id_202e872936dcd2f9*id_1d4ba1a29c79c520*id_b2a753abfa7b3316*id_4d5c47d156588dbd*id_dc75472c180bfea9*id_c21b978e9d49b408*id_d3f0074c7ff43204*id_10ed620c37a0bd6c*id_a689d739199c9c0f*id_d84e2b5777f49c9d*id_8401d9a9e1d0d076*id_f0f99e7b7b793e88*id_43946c55ae6b14b3*id_24e4086ee904f632*id_c49cf688cde6098a*id_af7cfe67cf6899bc*id_d2eb281b10ce64ca*id_1c9916ece05b0e5e*id_01b1fa268e90f081*id_0776f79891492548*id_fbdc68aec745e4fc*id_42df26c120ebda33*id_da1ddc8d31ceef20*id_2be474e0f668b46b*id_da2a6afc2a1bf8e1*id_a4e1202258cd6272*id_597e86070a061d54*id_0f818682e9a5f691*id_2a42aa3a874e5f8f*id_58da83568b77e4fd|4.895||
-manuscript|stem|9fc7ad6d04d28181|1aac828a0ea3a117|d74af699376605d7|-1793997187|manuscript.pdf*manuscript.Rmd|t19965.4091743999s|b9e58b46193b3130|1798790|file|local|vector|||273.043|There were 10 divergent transitions after warmup. httpmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmup|
+manuscript|stem|4a767f28c4f6fed9|1aac828a0ea3a117|2dfee6b59b5a5a3f|-1793997187|manuscript.pdf*manuscript.Rmd|t19965.4237360303s|30bd7dec3f56227a|1798632|file|local|vector|||258.626|There were 10 divergent transitions after warmup. httpmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmup|
 model|stem|f494624495fb5b7f|d9fbfdf4fbef846a|d1df2f0b690e352c|808688450||t19962.5959920841s|1c681f2269cfd545|32800|rds|local|vector|||125.311||
 plot_sbc1|stem|21da24fe892919aa|6e2cc9ec7b1086c5|306c2e1e4801a814|351388026||t19962.3813484736s|62c4dc836d2f9627|1459838388|rds|local|vector|||0.993||
 plot_sbc2|stem|a742e9933d7edb72|e057da52f529b931|fae9d4adfeb8cd24|-159386737||t19962.3800721591s|0e80c94ace64331e|1459856234|rds|local|vector|||3.498||
 plot_sbc_ecdf|function|c9e6db30a2a611a6|||||||||||||||
 plot_sbc_ecdf_diff|function|e26ea1a18e393c26|||||||||||||||
-plot_synthetic|stem|2a640d472c22b077|3238d33aa8296bd5|01c5b912bd28eb42|-95174283||t19965.3949435682s|fef6817183c9aad1|123416242|rds|local|vector|||16.329|Removed 763 rows containing missing values stat_slabinterval.|
-plot_synthetic_example|function|948f38e0135019cc|||||||||||||||
+plot_synthetic|stem|4946002ba9c2c3e0|3238d33aa8296bd5|1925c25ae746121f|-95174283||t19965.4203691612s|57f8a1466fd4f627|123414999|rds|local|vector|||15.001|Removed 924 rows containing missing values stat_slabinterval.|
+plot_synthetic_example|function|c4d59fbd73f177e2|||||||||||||||
 power|stem|3610671851e3cb49|4b2b477872881c71|a8bcd3788d571b79|-1880636380||t19964.7186393817s|d6632e4f4afa34bf|257|rds|local|vector|||0.026||
 prepare_sbc_backend|function|c5af0db27ecc70a8|||||||||||||||
 prepare_sbc_generator|function|4866589099befbb2|||||||||||||||

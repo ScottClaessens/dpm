@@ -24,10 +24,10 @@ plot_synthetic_example <- function(fit, delta_theta_promiscuity,
     stat_slab(alpha = 0.8) +
     scale_x_continuous(
       name = expression(paste(Delta, theta[z])),
-      limits = c(-15, 15),
+      limits = c(-10, 15),
       expand = c(0, 0)
     ) +
-    ylim(c(0, 1.2)) +
+    ylim(c(0, 1.3)) +
     scale_fill_manual(values = c("#c55852", "#5387b6")) +
     theme_classic() +
     theme(
