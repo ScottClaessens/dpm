@@ -17,7 +17,8 @@ compile_model <- function() {
         SpermSize   = "normal"
       ),
       id = "id",
-      tree = tree
+      tree = tree,
+      prior = list(A_offdiag = "normal(0, 2)")
     )
   # write stan code to file
   file <- 

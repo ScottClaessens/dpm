@@ -181,7 +181,7 @@ model{
   b ~ std_normal();
   eta_anc ~ std_normal();
   for (i in 1:(N_seg - 1)) z_drift[i] ~ std_normal();
-  A_offdiag ~ std_normal();
+  A_offdiag ~ normal(0, 2);
   A_diag ~ std_normal();
   Q_diag ~ std_normal();
   if (!prior_only) {

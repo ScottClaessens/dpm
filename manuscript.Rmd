@@ -15,7 +15,25 @@ figsintext : yes
 ---
 
 \begin{center}
-\lipsum[1]
+Phylogenetic comparative methods are widely used to study the coevolution of
+biological and cultural traits over evolutionary time. Among these methods, 
+some of the most popular are phylogenetic generalised linear mixed models, 
+phylogenetic path analysis, and Pagel's 'discrete' method. While these methods
+have clear benefits under specific scenarios, they also have important
+limitations, such as unrealistic assumptions about the evolutionary process,
+a focus on evolutionary correlation rather than causation, and limits on the 
+number and type of traits that researchers can include. Here, we develop a
+novel class of Bayesian *dynamic phylogenetic models* (DPMs) that overcomes
+these limitations and synthesizes the strengths of existing phylogenetic 
+comparative methods into a single generalizable framework for dynamic
+phylogenetic causal inference. We formally and conceptually introduce this
+class of model, which is applicable to any number of traits following any
+response distribution. We provide a short tutorial for fitting these models
+with the `coevolve` R package, a user-friendly package purpose-built for 
+fitting DPMs in Stan. We highlight previous studies that have used DPMs to 
+make inferences about trait coevolution, including analyses of brain size 
+in non-human primates and social complexity in human societies, and suggest
+some directions for future model development and research.
 \end{center}
 
 # Introduction
