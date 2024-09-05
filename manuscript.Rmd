@@ -105,7 +105,7 @@ clustering over the tree, thus reducing the risks of type I (false-positive),
 type II (false-negative), type M (magnitude), and type S (sign) errors during 
 statistical inference (*CITE*). Nonetheless, adjustment for phylogeny is not a 
 magic fix for all sources of unobserved confounding, nor does it guarantee that 
-resulting estimates are causally interpretable (*CITE*). Therefore, while all 
+resulting estimates are causally interpretable [@Hansen2014]. Therefore, while all 
 PCMs employ statistical techniques that reduce bias, these methods vary widely 
 in the degree to which they isolate the causal pathways by which traits coevolve 
 over time, with most commonly used methods focusing largely on evolutionary 
