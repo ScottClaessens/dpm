@@ -1,5 +1,5 @@
 ---
-title: "Causal inference and the detection of coevolutionary contingencies using dynamic phylogenetic models"
+title: "Causal inference and the detection of coevolutionary contingencies using generalized dynamic phylogenetic models"
 author: "E. Ringen, J. S. Martin, S. Claessens, & A. V. Jaeggi"
 date: "`r Sys.Date()`"
 output: 
@@ -23,14 +23,14 @@ have clear benefits under specific scenarios, they also have important
 limitations, such as unrealistic assumptions about the evolutionary process,
 a focus on evolutionary correlation rather than causation, and limits on the 
 number and type of traits that researchers can include. Here, we develop a
-novel class of Bayesian \textit{dynamic phylogenetic models} (DPMs) that
+novel class of Bayesian \textit{generalized dynamic phylogenetic models} (GDPMs) that
 overcomes these limitations and synthesizes the strengths of existing 
 phylogenetic comparative methods into a single generalizable framework for 
 dynamic phylogenetic causal inference. We formally and conceptually introduce
 this class of model, which is applicable to any number of traits following any
 response distribution. We provide a short tutorial for fitting these models
 with the \texttt{coevolve} R package, a user-friendly package purpose-built for 
-fitting DPMs in Stan. We highlight previous studies that have used DPMs to 
+fitting GDPMs in Stan. We highlight previous studies that have used GDPMs to 
 make inferences about trait coevolution, including analyses of brain size 
 in non-human primates and social complexity in human societies, and suggest
 some directions for future model development and research.
@@ -74,7 +74,7 @@ language [@Carpenter2017].
 We begin by briefly reviewing the benefits and constraints of current PCMs, 
 particularly with regard to causal inference, exploring how their limitations 
 motivate further methods development. We then formally and conceptually 
-introduce a novel class of *dynamic phylogenetic models* (DPMs). We provide a 
+introduce a novel class of *generalized dynamic phylogenetic models* (GDPMs). We provide a 
 worked synthetic example of coevolution between two continuous traits -- 
 illustrated as female promiscuity and sperm length [@Fitzpatrick2009] -- to 
 assess the accuracy and uncertainty of inferences made with dynamic phylogenetic
@@ -103,7 +103,7 @@ creating the illusion of convergent coevolution even when traits evolve
 independently. Adjustment for phylogeny reduces bias and variance due to 
 clustering over the tree, thus reducing the risks of type I (false-positive), 
 type II (false-negative), type M (magnitude), and type S (sign) errors during 
-statistical inference (*CITE*). Nonetheless, adjustment for phylogeny is not a 
+statistical inference [@felsenstein1985phylogenies; @harvey1998phylogenetic]. Nonetheless, adjustment for phylogeny is not a 
 magic fix for all sources of unobserved confounding, nor does it guarantee that 
 resulting estimates are causally interpretable [@Hansen2014]. Therefore, while all 
 PCMs employ statistical techniques that reduce bias, these methods vary widely 
@@ -122,10 +122,9 @@ to quantify trait covariance between species or populations due to shared
 evolutionary history (likewise for their predecessor, independent contrasts) 
 [@Blomberg2012; @Grafen1989; @Hadfield2010; @Lynch1991; @Symonds2014]. The most 
 commonly assumed model of trait coevolution in these regression models is 
-Brownian motion (also called a Wiener process, *CITE*), which assumes that the 
-trait variance for a given species or population is proportional to the total 
+Brownian motion, which assumes that the trait variance for a given species or population is proportional to the total 
 branch length of the tree leading from root to tip, and the covariance between 
-any two species is proportional to their amount of shared history. This process
+any two species is proportional to their amount of shared history [@felsenstein1985phylogenies]. This process
 is often biologically interpreted as reflecting patterns of evolutionary drift 
 (or neutral evolution) across a phylogenetic tree. Empirically, the actual 
 degree of covariance between related species or populations may be less than
@@ -138,9 +137,9 @@ greater independence among taxa [@Pagel1999]. In cases where traits do not
 evolve according to a modified Brownian motion process, other adjustments can 
 also be made to the basic phylogenetic generalized linear model to modify the 
 expected rate change in trait (co)variation. For instance, early burst models 
-of adaptive radiation allow the rate of change to decrease over time (*CITE*), 
+of adaptive radiation allow the rate of change to decrease over time [@harmon2010early], 
 while Ornstein-Uhlenbeck models characterize evolutionary change as the product
-of both stochastic and deterministic processes (*CITE*).
+of both stochastic and deterministic processes [@Hansen2014; @butler2004phylogenetic].
 
 Despite their differences, attempts to use parameters from any of these models
 for causal inference share often unstated and undesirable assumptions, namely 
@@ -263,7 +262,7 @@ causal models, thus motivating the development of dynamic methods.
 
 ## Pagel's discrete dynamic method
 
-To date, Pagel's [-@Pagel1994] "discrete" method is the only general application
+To date, Pagel's [-@Pagel1994] "discrete" method is the most widely-used application
 of dynamic causal inference to phylogenetic data. By reconstructing the 
 coevolutionary sequence of two traits along the branches of a phylogeny, 
 researchers can infer causality and potentially reciprocal causality through 
@@ -297,9 +296,9 @@ the incorporation of latent variables into a dynamic causal analysis
 (\autoref{fig:dags}e). Latent variables are widely used in biology to capture
 theoretically pertinent constructs that are difficult to directly operationalize
 and quantify using a single measurement, such as size and shape dimensions in 
-morphometrics (*CITE*), environmental quality and climate metrics in ecology
-(*CITE*), life history variation [@Stott2024], and canonical axes of 
-correlational selection in quantitative genetics (*CITE*). While latent 
+morphometrics [@zelditch2012geometric], environmental quality and climate metrics in ecology
+[@arhonditsis2006exploring], life history variation [@Stott2024], and canonical axes of 
+correlational selection in quantitative genetics [@posthuma2003theory]. While latent 
 variables are sometimes used pragmatically as placeholders for deeper causal 
 analysis [@Shipley2016], many evolutionary models directly conceptualize and 
 model causal effects occurring among latent variables. For instance, 
@@ -309,40 +308,23 @@ turn be caused by the correlated evolution of a niche complexity continuum
 reflecting differences in brain size and cognitive ability, social group size, 
 and foraging behavior [@Dunbar2017; @Miller2019; @Navarrete2016] (see 
 \autoref{sec:brain-size-evo}). While prior research has used methods such as 
-phylogenetic principal component analysis (pPCA; *CITE*) to apply Pagel's method
+phylogenetic principal component analysis to apply Pagel's method
 to latent variables [e.g. @Cornwallis2017], this approach still requires falsely
 dichotomizing latent variables and thus suffers from the same statistical biases
 as with any other continuous measure. Synthesizing continuous and multivariate
 methods with dynamic causal inference thus remains a major challenge for 
 contemporary PCMs.
 
-# Dynamic phylogenetic models
+## Dynamic methods with continuous traits
 
-The limitations of current PCMs can be overcome by synthesizing their respective
-strengths into a single generalizable framework for dynamic phylogenetic causal
-inference, applicable to both discrete and continuous traits. We have attempted
-to do so through the development of a novel class of PCMs we refer to simply as
-dynamic phylogenetic models (DPMs) of trait coevolution. Our DPM is driven by a 
-multivariate stochastic differential equation, similar to a multivariate 
-Ornstein-Uhlenbeck (OU) process (see Box \autoref{box:ou-model} for an overview
-of the basic OU model) with greater model flexibility and complexity than is 
-permitted by standard implementations. Our approach arose from two complementary
-goals: first, to extend previous Bayesian implementations of the multivariate OU
-model such that the optimal trait value $\theta$ is updated dynamically (rather
-than assuming piecewise constant, see Box \autoref{box:ou-model}). Second, we 
-wanted a general form for the optimal trait value $\theta$ that could be used to
-assess directionality (X → Y vs. Y → X) and contingencies (X, then Y) in 
-evolution, akin to Pagel's [-@Pagel1994] method but without restrictions on the
-type or number of traits.
-
-\mybox[label=box:ou-model]{The Ornstein-Uhlenbeck (OU) model}
+There are several other approaches to dynamic causal inference, based on the Ohrnstein-Uhlenbeck (OU) model, that relax Pagel's assumption of discrete traits. 
 The OU model is a mean-reverting, stationary Gauss-Markov process. It describes
 change in a trait due to both Gaussian noise and reversion towards some central
 value. In some fields, such as economics, the mean reversion component is called
 "drift" and the stochastic noise is called "diffusion" (i.e., the Vasicek model,
-*CITE*). In evolutionary biology, the mean-reverting quality is loosely 
+[@vasicek1977equilibrium]). In evolutionary biology, the mean-reverting quality is loosely 
 interpreted as "selection" and accordingly the Gaussian noise is labeled "drift"
-(*CITE*). The basic OU form is
+[@uhlenbeck1930theory; @hansen1997stabilizing; @Hansen2014]. The basic OU form is
 
 $$
 dy(t) = \alpha(\theta - y_{t}) + \sigma dW(t)
@@ -355,18 +337,34 @@ assume a single evolutionary optimum ($\theta$), or estimate an ancestral
 optimum along with a global optimum. More elaborate OU models imagine that 
 $\theta$ changes as a function of other variables, turning it into a 
 coevolutionary process with varying selection regimes (i.e., the Hansen model; 
-*CITE*). These approaches exploit the fact that, if selection regimes are 
+[@hansen1997stabilizing]). These approaches exploit the fact that, if selection regimes are 
 piecewise-constant (the optimum is the same within each segment of the 
 phylogenetic tree but allowed to vary at branching points), the OU process can 
 be discretized, giving a closed form solution for the expectation and covariance
-matrix of a trait. Butler and King (*CITE*) provided a maximum-likelihood 
+matrix of a trait. Butler and King [@butler2004phylogenetic] provided a maximum-likelihood 
 algorithm for this approach, and a Bayesian implementation was developed by 
-Ross et al. (*CITE*). Depending on the research question, the piecewise constant 
-assumption can be quite restrictive and a poor approximation when tree segments
-are long, due to the assumption of a constant optimum within each discrete tree
-segment.
+Ross et al. [@ross2016origins]. These approaches assume that one trait influences the evolution of another, 
+but not vice versa (i.e. no feedback). The multivariate OU model was further extended to allow the estimation of reciprocal, directed evolution between traits [@bartoszek2012phylogenetic], a method that has been implemented in the mvslouch package [@bartoszek2024fast]. This approach aligns closest with our goals, however the current maximum-likelihood implementation only allows for Gaussian traits, suffers from estimation problems, and lacks flexibility (such as accounting for latent factors, measurement error, missing data, repeated measures, etc.), which is why what motivated us to pursue a Bayesian implementation in the Stan probabilistic programming language [@Carpenter2017]. 
 
-\endmybox
+# Dynamic phylogenetic models
+
+The limitations of current PCMs can be overcome by synthesizing their respective
+strengths into a single generalizable framework for dynamic phylogenetic causal
+inference, applicable to both discrete and continuous traits. We have attempted
+to do so through the development of what we refer to simply as generalized
+dynamic phylogenetic models (GDPMs) of trait coevolution. Our GDPM is driven by a 
+multivariate stochastic differential equation, similar to a multivariate 
+Ornstein-Uhlenbeck (OU) process (see section 2.4. for an overview
+of the basic OU model) with greater model flexibility and complexity than is 
+permitted by current implementations. Our approach arose from two complementary
+goals: first, to extend previous Bayesian implementations of the multivariate OU
+model such that the optimal trait value $\theta$ is updated dynamically (rather
+than assuming piecewise constant, see 2.4.). Second, we 
+wanted a general form for the optimal trait value $\theta$ that could be used to
+assess directionality (X → Y vs. Y → X) and contingencies (X, then Y) in 
+evolution, akin to Pagel's [-@Pagel1994] method and existing OU methods [@bartoszek2012phylogenetic; @bartoszek2024fast] but without restrictions on the
+type or number of traits, and with more flexibility to account for the realities of comparative data.
+
 
 ## Formal model
 
@@ -425,7 +423,7 @@ matrix, $\text{row()}$ is an operation that takes elements of a matrix row-wise
 and puts them in a column vector, and $\text{irow()}$ is the inverse of the row
 operation [@Driver2017]. In the OU process, $\frac{dy}{dt}=0$ when $y=\theta$ 
 (Box \autoref{box:ou-model}). Equivalently, we can calculate the equilibrium 
-value $\theta$ for each trait $\eta_i$ in the DPM as
+value $\theta$ for each trait $\eta_i$ in the GDPM as
 
 \begin{equation}
   \label{eq:equilibrium}
@@ -434,7 +432,7 @@ value $\theta$ for each trait $\eta_i$ in the DPM as
 \end{equation}
 
 Note that the vector $\theta_{\eta}$ does not equal the time asymptotic trait 
-values for the system as a whole ($\textbf{b}_{\Delta\infty}$; *CITE*), which 
+values for the system as a whole ($\textbf{b}_{\Delta\infty}$), which 
 are determined by 
 
 \begin{equation}
@@ -450,7 +448,7 @@ iterate over segments of the tree and allow the coevolutionary process to play
 out over the length of each tree segment.
 
 \begin{algorithm}
-  \caption{Implementation of the dynamic phylogenetic model}\label{alg:alg}
+  \caption{Implementation of the generalized dynamic phylogenetic model}\label{alg:alg}
   \DontPrintSemicolon
   \For{$n \in N$}{
     Divide the evolutionary history of $n$ into $S$ segments, where each 
@@ -471,7 +469,7 @@ out over the length of each tree segment.
   }
 \end{algorithm}
 
-```{r dpm-algorithm, echo=FALSE, fig.align='center', fig.cap='\\textit{The DPM algorithm.} Example of how our phylogenetic algorithm works (see \\autoref{alg:alg} for formal structure). The evolutionary history of each tip (A-E) is described as a time series starting at \\(t(s)\\) and comprised of a set of segments \\(S\\). The OU process runs over each segment in order, where the initial trait values for any segment \\(s\\) are the terminal values from \\(s-1\\). Each sequence is a combination of shared segments (where tips are evolving together) and unshared segments (where tips are evolving independently). For example, S(A) and S(B) start with the same trait values because they both descend directly from the parent segment S(A,B). But further evolution along S(A) and S(B) happens independently. Dashed lines indicate segment split points.', out.width='100%'}
+```{r GDPM-algorithm, echo=FALSE, fig.align='center', fig.cap='\\textit{The GDPM algorithm.} Example of how our phylogenetic algorithm works (see \\autoref{alg:alg} for formal structure). The evolutionary history of each tip (A-E) is described as a time series starting at \\(t(s)\\) and comprised of a set of segments \\(S\\). The OU process runs over each segment in order, where the initial trait values for any segment \\(s\\) are the terminal values from \\(s-1\\). Each sequence is a combination of shared segments (where tips are evolving together) and unshared segments (where tips are evolving independently). For example, S(A) and S(B) start with the same trait values because they both descend directly from the parent segment S(A,B). But further evolution along S(A) and S(B) happens independently. Dashed lines indicate segment split points.', out.width='100%'}
 knitr::include_graphics("figures/dpm_algorithm.png")
 ```
 
@@ -489,10 +487,10 @@ missing data.
 
 ## The `coevolve` R package
 
-To aid researchers in applying the DPM to their own data, we have developed the 
+To aid researchers in applying the GDPM to their own data, we have developed the 
 `coevolve` R package (https://github.com/ScottClaessens/coevolve). This 
-fully documented package provides a user-friendly interface for applying DPMs, 
-with simple functions for generating DPM Stan code and data lists, fitting DPMs
+fully documented package provides a user-friendly interface for applying GDPMs, 
+with simple functions for generating GDPM Stan code and data lists, fitting GDPMs
 to data using the `cmdstanr` package [@R_cmdstanr], and post-processing and 
 plotting model results.
 
@@ -697,7 +695,7 @@ inaccurately computing the posterior distribution.
 
 We used the `SBC` R package [@Modrak2023] to run our simulation-based 
 calibration exercise. We generated 500 simulated datasets from the prior ($N$ =
-20, one continuous trait and one binary trait) and fitted the DPM to these
+20, one continuous trait and one binary trait) and fitted the GDPM to these
 simulated datasets. We then determined whether the posterior ranks from the 
 fitted models were uniformly distributed by plotting, for several key model 
 parameters and the log-likelihood, the differences between the empirical 
@@ -740,10 +738,10 @@ in most theoretical models (e.g. larger brains allow access to better diet which
 removes energetic constraints on larger brains) [@Isler2014]. Add the fact that
 Pagel's discrete method has to our knowledge never been applied to brain size 
 due to its continuous nature, and this field is virtually predisposed to the use
-of DPMs. The issues and innovations highlighted here should also generalize to 
+of GDPMs. The issues and innovations highlighted here should also generalize to 
 many other morphological and socio-ecological traits.
 
-To illustrate the potential of DPMs to analyze brain size evolution, we used the
+To illustrate the potential of GDPMs to analyze brain size evolution, we used the
 dataset of @DeCasien2017, augmented by life-history variables from 
 @Herculano2019, and a consensus phylogeny from 10ktrees [@Arnold2010]. We 
 contrasted a typical phylogenetic multiple regression (Fig. 5a), in which all 
@@ -755,7 +753,7 @@ regression (Fig. 5a), the model in Fig. 5b directly modeled relative brain size
 as the allometric slope for the brain-body relationship; we also accounted for
 variable allometric relationships using random intercepts and slopes at the
 species level, thus allowing species to differ in their brain-body allometry
-[@Smaers2021]. Note also that this DPM used Bayesian imputation rather than 
+[@Smaers2021]. Note also that this GDPM used Bayesian imputation rather than 
 removing species with missing data and losing valuable information and 
 statistical power. In contrast to the approach in Fig. 5a, which compares 
 independent causes and might conclude that "primate brain size is predicted by
@@ -767,9 +765,9 @@ These latent factor groupings are not surprising, given that much work in
 primate socio-ecology has emphasized connections between diet and group size
 [@Sterck1997; @Wrangham1980], and both are consistently found to correlate with
 relative brain size [@DeCasien2017; @Dunbar2017]; the integration of life 
-history traits and body size is also well established (*CITE*).
+history traits and body size is also well established [@Healy2019; @Wright2019].
 
-A DPM analyzing the coevolution of these two latent factors (see Supplementary
+A GDPM analyzing the coevolution of these two latent factors (see Supplementary
 Materials) showed that evolutionary changes in life-history pace (LH) cause 
 evolutionary changes in niche complexity (NC), but not vice versa (Fig. 5c). In
 other words, evolution of larger size and slower life history was inferred to 
@@ -793,7 +791,7 @@ ranging from nomadic hunter-gatherers to large-scale states or empires. Many
 anthropologists have used comparative approaches to better understand this 
 diversity [@Hooper2024; @Nunn2011], including many applications of Pagel's 
 discrete method [@Sheehan2018; @Watts2016]. Here we summarize two studies that
-have used our DPM.
+have used our GDPM.
 
 @Ringen_preprint examined the rise of social complexity using a global sample of
 186 pre-industrial societies that ranged from hunter-gatherers to agrarian 
@@ -806,7 +804,7 @@ model in which a latent "complexity" factor explains all observed variables
 comparison supported the two-factor model (the correlation structure of which is
 shown in Figure 5B). The authors labeled one factor "resource-use 
 intensification" (RI) and the other "technological and social differentiation" 
-(TSD). A DPM analyzing the co-evolution of the two latent variables RI and TSD 
+(TSD). A GDPM analyzing the co-evolution of the two latent variables RI and TSD 
 showed that, while these two variables are highly correlated (Figure 6C left),
 evolutionary changes in RI were inferred to cause changes in TSD but not vice
 versa (Figure 6C right). In other words, subsistence intensification was a 
@@ -821,11 +819,11 @@ Austronesian societies. Religious and political authority were both coded as
 four-level ordinal variables: absent, sub-local authority, local authority, and
 supra-local authority. Mapping these variables onto a phylogeny of Austronesian
 languages revealed that both religious and political authority had high 
-phylogenetic signals, suggesting that a DPM could reasonably be used to assess
+phylogenetic signals, suggesting that a GDPM could reasonably be used to assess
 the coevolution of these variables over cultural evolutionary time. Instead of
 dichotomizing the two ordinal variables to use Pagel's discrete method, as 
 previous work had done [@Sheehan2018; @Watts2016], the authors explicitly 
-modelled both variables as ordinal in a DPM. The model revealed that both 
+modelled both variables as ordinal in a GDPM. The model revealed that both 
 religious and political authority coevolved reciprocally over time. In other 
 words, increases in religious authority led to strong positive selection on 
 political authority and, likewise, increases in political authority led to 
@@ -838,6 +836,7 @@ another [e.g. @Goodenough2002].
 
 # Conclusions and Limitations
 
+We presented 
 First paragraph repeats major advances of the method:
 Dynamic model, analogous to Pagel’s discrete, but without being limited to binary traits
 Can handle any distribution, latent factors
