@@ -15,25 +15,7 @@ figsintext : yes
 ---
 
 \begin{center}
-Phylogenetic comparative methods are widely used to study the coevolution of
-biological and cultural traits over evolutionary time. Among these methods, 
-some of the most popular are phylogenetic generalised linear mixed models, 
-phylogenetic path analysis, and Pagel's `discrete' method. While these methods
-have clear benefits under specific scenarios, they also have important
-limitations, such as unrealistic assumptions about the evolutionary process,
-a focus on evolutionary correlation rather than causation, and limits on the 
-number and type of traits that researchers can include. Here, we develop a
-novel class of Bayesian \textit{generalized dynamic phylogenetic models} (GDPMs) that
-overcomes these limitations and synthesizes the strengths of existing 
-phylogenetic comparative methods into a single generalizable framework for 
-dynamic phylogenetic causal inference. We formally and conceptually introduce
-this class of model, which is applicable to any number of traits following any
-response distribution. We provide a short tutorial for fitting these models
-with the \texttt{coevolve} R package, a user-friendly package purpose-built for 
-fitting GDPMs in Stan. We highlight previous studies that have used GDPMs to 
-make inferences about trait coevolution, including analyses of brain size 
-in non-human primates and social complexity in human societies, and suggest
-some directions for future model development and research.
+Phylogenetic comparative methods are widely used to study the coevolution of biological or cultural traits over evolutionary time. Among the most popular of these methods are phylogenetic generalised linear mixed models, phylogenetic path analysis, Ornstein-Uhlenbeck models, and Pagel's `discrete' method. While these methods are appropriate under specific scenarios, they also limited by often unrealistic assumptions about the evolutionary process and limits on the  number and type of traits that researchers can include. Here, we develop a novel class of \textit{generalized dynamic phylogenetic models} (GDPMs) that overcomes these limitations and synthesizes the strengths of existing methods into a generalizable framework for dynamic phylogenetic inference. Treating the phylogeny as an implicit time series, GDPMs model the co-evolution of any number of traits undergoing both selection and drift, capable of inferring directed evolution (X -> Y vs Y -> X), feedback (X <-> Y), and contigencies (e.g., first X, then Y). We introduce the \texttt{coevolve} R package, a user-friendly package purpose-built for fitting GDPMs in a Bayesian framework using Stan. We provide a short tutorial for fitting these models and present several empirical applications of GDPMs to make inferences about trait coevolution, including analyses of brain size in non-human primates and social complexity in human societies. ADD BRIEF SUMMARY/HIGHLIGHTS OF THE EMPIRICAL RESULTS.
 \end{center}
 
 # Introduction
