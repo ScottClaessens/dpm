@@ -836,8 +836,20 @@ Austronesian ethnographies, which describe how both forms of authority are
 tightly interdependent and have often historically served to legitimize one 
 another [e.g. @Goodenough2002].
 
-# Conclusion
+# Conclusions and Limitations
 
-xxx
+First paragraph repeats major advances of the method:
+Dynamic model, analogous to Pagel’s discrete, but without being limited to binary traits
+Can handle any distribution, latent factors
+Can detect evolutionary contingencies (A→B, B→A) and reciprocal causation
+Unbiased estimator, empirical examples summary
+
+Second paragraph states limitations, starting with specific to this method then going broader
+1: Correlated drift cannot be separated from cross-selection (though this is possible with ‘real’ longitudinal data) - biological examples of traits under correlated drift?
+2: Cross-selection effects assumed to be linear - this can be somewhat relaxed with clade-specific parameters, but still locally linear
+3: Computational cost - as with any Bayesian model - can range from minutes (for small phylogenies / datasets) to hours (SCCS example) or even days (for the most complex models, or if looped over a sample of trees)
+4: Interpretation - we’re detecting contingency, not true causality; though this is the same for other kinds of causal inference (Pearl, Pagel, Turchin)
+5: Data quality and inference - comparative data tend to be crude, and all comparative analyses assume that extant variation reflects all past variation. Virtual archeology / paleontology is not as good as real archeology / paleontology! This can be somewhat amended by including information about ancestral nodes, e.g. complexity SCCS analysis put prior for low complexity on last common ancestor - in principle this could be done for any internal node, with prior reflecting exact state of knowledge
+
 
 # References
