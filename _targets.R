@@ -8,8 +8,8 @@ list(
   # compile model
   tar_target(model, compile_model()),
   # fit example individual model
-  tar_target(sim, simulate_data(n = 100)),
-  tar_target(fit, fit_model(model, sim, output_dir = "out")),
+  tar_target(sim, simulate_data(n = 500)),
+  tar_target(fit, fit_model(model, sim$sim_data, output_dir = "out")),
   # get delta theta values
   tar_target(
     delta_theta_promiscuity,
@@ -34,18 +34,18 @@ list(
                            delta_theta_spermsize)
     ),
   # simulate data and fit separate models
-  tar_target(id, 1:100),
-  tar_map(
-    # loop over different sample sizes
-    values = tibble(n = c(20, 50, 100)),
-    tar_target(sim, simulate_data(n, id), pattern = map(id)),
-    tar_target(results, fit_model_and_extract(model, sim, id), 
-               pattern = map(sim, id))
-  ),
-  # combine results
-  tar_target(results, bind_rows(results_20, results_50, results_100)),
-  # summarise power
-  tar_target(power, calculatePower(results)),
+  # tar_target(id, 1:100),
+  # tar_map(
+  #   # loop over different sample sizes
+  #   values = tibble(n = c(20, 50, 100)),
+  #   tar_target(sim, simulate_data(n, id), pattern = map(id)),
+  #   tar_target(results, fit_model_and_extract(model, sim, id), 
+  #              pattern = map(sim, id))
+  # ),
+  # # combine results
+  # tar_target(results, bind_rows(results_20, results_50, results_100)),
+  # # summarise power
+  # tar_target(power, calculatePower(results)),
   
   ### Simulation-based calibration
   
