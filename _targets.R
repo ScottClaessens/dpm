@@ -30,7 +30,7 @@ list(
   # plot synthetic example
   tar_target(
     plot_synthetic,
-    plot_synthetic_example(fit, delta_theta_promiscuity, 
+    plot_synthetic_example(fit, sim$equilibria, delta_theta_promiscuity, 
                            delta_theta_spermsize)
     ),
   # simulate data and fit separate models

@@ -1,4 +1,4 @@
-plot_synthetic_example <- function(fit, delta_theta_promiscuity,
+plot_synthetic_example <- function(fit, equilibria, delta_theta_promiscuity,
                                    delta_theta_spermsize) {
   # plot cichlid species
   pA <-
@@ -22,6 +22,7 @@ plot_synthetic_example <- function(fit, delta_theta_promiscuity,
     ) %>%
     ggplot(aes(x = post, fill = Direction)) +
     stat_slab(alpha = 0.8) +
+    geom_vline(data = equilibria, aes(xintercept = value, color = Direction)) +
     scale_x_continuous(
       name = expression(paste(Delta, theta[z])),
       limits = c(-10, 15),

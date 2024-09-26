@@ -22,23 +22,26 @@ simulate_data <- function(n, id = NULL) {
     n, variables, selection_matrix, drift, prob_split = 0.05
   )
 
-  # calculate equilbria and standardized changes in equilibria
-  # Function to solve the discrete-time Lyapunov equation
-  lyapunov <- function(A, Omega) {
-    return(solve(diag(nrow(A)^2) - kronecker(A, A)) %*% as.vector(Omega))
-    }
-  Sigma <- matrix(lyapunov(selection_matrix, diag(drift)), nrow = nrow(selection_matrix), byrow = TRUE)
+  # # calculate equilbria and standardized changes in equilibria
+  # # Function to solve the discrete-time Lyapunov equation
+  # lyapunov <- function(A, Omega) {
+  #   return(solve(diag(nrow(A)^2) - kronecker(A, A)) %*% as.vector(Omega))
+  #   }
+  # Sigma <- matrix(lyapunov(selection_matrix, diag(drift)), nrow = nrow(selection_matrix), byrow = TRUE)
   
-  sd_prom <- sqrt(Sigma[1,1]) # stationary sd of promiscuity 
-  sd_sperm <- sqrt(Sigma[2,2]) # stationary sd of sperm size
+  median_prom <- median(sim_list$sim_data$data$Promiscuity)
+  median_sperm <- median(sim_list$sim_data$data$SpermSize)
 
-  delta_theta_prom_sperm <- ((selection_matrix[2,1]*sd_prom)/(1/selection_matrix[2,2])) / sd_sperm
-  delta_theta_sperm_prom <- ((selection_matrix[1,2]*sd_sperm)/(1/selection_matrix[1,1])) / sd_prom
+  mad_prom <- mad(sim_list$sim_data$data$Promiscuity) # sd of promiscuity 
+  mad_sperm <- mad(sim_list$sim_data$data$SpermSize) # sd of sperm size
+
+  delta_theta_prom_sperm <- ( ((selection_matrix[2,1]*(median_prom + mad_prom))/(1 - selection_matrix[2,2])) - ((selection_matrix[2,1]*(median_prom))/(1 - selection_matrix[2,2])) ) / mad_sperm
+
+  delta_theta_sperm_prom <- ( ((selection_matrix[1,2]*(median_sperm + mad_sperm))/(1 - selection_matrix[1,1])) - ((selection_matrix[1,2]*(median_sperm))/(1 - selection_matrix[1,1])) ) / mad_prom
 
   sim_list$equilibria <- data.frame(
-    from = c("Promiscuity", "SpermSize"),
-    to = c("SpermSize", "Promiscuity"),
-    values = c(delta_theta_prom_sperm, delta_theta_sperm_prom)
+    Direction = c("Promiscuity -> Sperm size", "Sperm size -> Promiscuity"),
+    value = c(delta_theta_prom_sperm, delta_theta_sperm_prom)
   )
 
   return(sim_list)
